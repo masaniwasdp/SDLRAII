@@ -31,35 +31,29 @@ struct SDL_WindowRAII
     {
         if (ptr) throw new SDL_Exception(`Given pointer was null.`);
 
-        this.ptr = ptr;
+        ptr_ = ptr;
     }
 
     this(this) @disable;
 
     ~this()
     {
-        SDL_DestroyWindow(ptr);
+        SDL_DestroyWindow(ptr_);
     }
 
-    /**
-      Akiras puntero de la fenestron.
-
-      Returns: Puntero de la fenestro.
-     */
-    SDL_Window* opUnary(string s)() const @nogc nothrow pure @safe if (s == `*`)
-    out (result)
+    /** Puntero de la fenestro. */
+    @property
     {
-        assert(result);
-    }
-    do
-    {
-        return ptr;
+        SDL_Window* ptr() @nogc nothrow pure @safe
+        {
+            return ptr_;
+        }
     }
 
-    private SDL_Window* ptr; /// Puntero de fenestro, kiu estas administrata.
+    private SDL_Window* ptr_; /// Puntero de fenestro, kiu estas administrata.
 
     invariant
     {
-        assert(ptr);
+        assert(ptr_);
     }
 }
