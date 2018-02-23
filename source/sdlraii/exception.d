@@ -1,5 +1,5 @@
 /**
-  Esceptojn de la SDL biblioteko.
+  Manipulas esceptojn de la SDL biblioteko.
 
   Authors:   masaniwa
   Copyright: 2018 masaniwa
@@ -14,4 +14,9 @@ import std.exception : basicExceptionCtors;
 class SDL_Exception : Exception
 {
     mixin basicExceptionCtors;
+}
+
+void SDL_Try(lazy scope int expression)
+{
+    if (expression < 0) throw new SDL_Exception(`An error occurred.`);
 }

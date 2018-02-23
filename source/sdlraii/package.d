@@ -9,4 +9,4 @@
 module sdlraii;
 
 public import sdlraii.exception;
-public import sdlraii.video;
+public import sdlraii.raii;
