@@ -15,7 +15,8 @@ import sdlraii.exception : SDL_Exception;
 struct SDL_RAII(T)
 {
     static assert(
-        !__traits(isSame, SDL_Release!T, SDL_DummyFunc), __traits(identifier, T) ~ ` is not supported type.`);
+        !__traits(isSame, SDL_Release!T, SDL_DummyFunc),
+        `The type ` ~ __traits(identifier, T) ~ ` is not supported.`);
 
     /**
       Konstruas la strukturon.
@@ -92,15 +93,4 @@ unittest
         SDL_CreateRenderer(window.ptr, -1, SDL_RENDERER_ACCELERATED));
 
     assert(renderer.ptr);
-
-    try
-    {
-        SDL_RAII!SDL_Window(null);
-
-        assert(false);
-    }
-    catch (SDL_Exception)
-    {
-        assert(true);
-    }
 }
