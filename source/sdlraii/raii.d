@@ -64,9 +64,13 @@ struct SDL_RAII(T)
 }
 
 private alias SDL_Release(T) = SDL_DummyFunc;
+
 private alias SDL_Release(T : SDL_Window) = SDL_DestroyWindow;
+
 private alias SDL_Release(T : SDL_Renderer) = SDL_DestroyRenderer;
+
 private alias SDL_Release(T : SDL_Texture) = SDL_DestroyTexture;
+
 private alias SDL_Release(T : SDL_Surface) = SDL_FreeSurface;
 
 private void SDL_DummyFunc() @nogc nothrow pure @safe
