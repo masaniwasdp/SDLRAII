@@ -1,7 +1,5 @@
 language: d
 
-dist: zesty
-
 addons:
   apt:
     packages:
