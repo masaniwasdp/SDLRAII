@@ -82,19 +82,28 @@ unittest
 {
     import std.string : toStringz;
 
-    DerelictSDL2.load;
+    debug (CI)
+    {
+        import std.stdio : writeln;
 
-    assert(SDL_Init(SDL_INIT_EVERYTHING) == 0);
+        writeln(__FILE__ ~ `: Some tests using GUI are not available.`);
+    }
+    else
+    {
+        DerelictSDL2.load;
 
-    scope (exit) SDL_Quit();
+        assert(SDL_Init(SDL_INIT_EVERYTHING) == 0);
 
-    auto window = SDL_RAII!SDL_Window(
-        SDL_CreateWindow(toStringz(``), 0, 0, 77, 16, SDL_WINDOW_HIDDEN));
+        scope (exit) SDL_Quit();
 
-    assert(window.ptr);
+        auto window = SDL_RAII!SDL_Window(
+            SDL_CreateWindow(toStringz(``), 0, 0, 77, 16, SDL_WINDOW_HIDDEN));
 
-    auto renderer = SDL_RAII!SDL_Renderer(
-        SDL_CreateRenderer(window.ptr, -1, SDL_RENDERER_ACCELERATED));
+        assert(window.ptr);
 
-    assert(renderer.ptr);
+        auto renderer = SDL_RAII!SDL_Renderer(
+            SDL_CreateRenderer(window.ptr, -1, SDL_RENDERER_ACCELERATED));
+
+        assert(renderer.ptr);
+    }
 }
