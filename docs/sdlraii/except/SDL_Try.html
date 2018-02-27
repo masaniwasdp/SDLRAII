@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
-		<title>Function SDL_WindowRAII.this</title>
+		<title>Function SDL_Try</title>
 		<link rel="stylesheet" type="text/css" href="../../styles/ddox.css"/>
 		<link rel="stylesheet" href="../../prettify/prettify.css" type="text/css"/>
 		<script type="text/javascript" src="../../scripts/jquery.js">/**/</script><script type="text/javascript" src="../../scripts/ddox.js">/**/</script>
@@ -26,13 +26,18 @@ $('#symbolSearchPane').show();</script>
 					</div>
 			<ul class="tree-view">
 				<li>
-					<div class="module ">
-						<a href="../../sdlraii/exception.html">exception</a>
+					<div class="module selected">
+						<a href="../../sdlraii/except.html">except</a>
 					</div>
 				</li>
 				<li>
-					<div class="module selected">
-						<a href="../../sdlraii/video.html">video</a>
+					<div class="module ">
+						<a href="../../sdlraii/raii.html">raii</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../sdlraii/types.html">types</a>
 					</div>
 				</li>
 			</ul>
@@ -40,15 +45,15 @@ $('#symbolSearchPane').show();</script>
 			</ul>
 		</nav>
 		<div id="main-contents">
-			<h1>Function SDL_WindowRAII.this</h1><p>Konstruas la strukturon.
+			<h1>Function SDL_Try</h1><p>Ekzekuto esprimon, kiu povas malsukcesi.
 </p>
 			<div class="prototype">
 				<code class="lang-d">
 					<div class="single-prototype">
-			<span class="pln">this</span>
+			<span class="typ">void</span> <span class="pln">SDL_Try</span>
 			<span class="pun">(</span>
 			<br/>
-			&nbsp;&nbsp;<span class="pln">derelict<wbr/></span><span class="pun">.</span><span class="pln">sdl2<wbr/></span><span class="pun">.</span><span class="pln">internal<wbr/></span><span class="pun">.</span><span class="pln">sdl_types<wbr/></span><span class="pun">.</span><span class="typ">SDL_Window</span><span class="pun">*</span> <span class="pln">ptr</span>
+			&nbsp;&nbsp;<span class="kwd">lazy </span><span class="typ">int</span> <span class="pln">exp</span>
 			<br/>
 			<span class="pun">)</span><span class="pun">;</span>
 					</div>
@@ -58,11 +63,11 @@ $('#symbolSearchPane').show();</script>
 
 			<section><h2>Parameters</h2>
 <table><col class="caption"><tr><th>Name</th><th>Description</th></tr>
-<tr><td id="ptr">ptr</td><td> Puntero de fenestro, kiu estos administrata.</td></tr>
+<tr><td id="exp">exp</td><td> Esprimo, kiu revenas negativan nombron se ĝi malsukcesas.</td></tr>
 </table>
 </section>
 <section><h2>Throws</h2>
-<p>SDL_Exception Kiam ptr estis null.
+<p>SDL_Exception Kiam la esprimo malsukcesas.
 </p>
 </section>
 

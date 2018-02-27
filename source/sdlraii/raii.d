@@ -8,14 +8,12 @@
 module sdlraii.raii;
 
 import derelict.sdl2.sdl;
-import sdlraii.exception : SDL_Exception;
+import sdlraii.except : SDL_Exception;
 
 /** Administras rimedon. */
 struct SDL_RAII(T)
 {
-    static assert(
-        !__traits(isSame, SDL_Release!T, SDL_DummyFunc),
-        `The type ` ~ __traits(identifier, T) ~ ` is not supported.`);
+    static assert(!__traits(isSame, SDL_Release!T, SDL_DummyFunc), `Type T is not supported.`);
 
     /**
       Konstruas la strukturon.
@@ -29,7 +27,14 @@ struct SDL_RAII(T)
      */
     this(lazy T* exp)
     {
-        ptr_ = exp;
+        try
+        {
+            ptr_ = exp;
+        }
+        catch (Throwable t)
+        {
+            throw new SDL_Exception(`Failed to get the resource.`, t);
+        }
 
         if (!ptr_) throw new SDL_Exception(`Failed to get the resource.`);
     }
@@ -52,7 +57,7 @@ struct SDL_RAII(T)
         return ptr_;
     }
 
-    private T* ptr_; /// Puntero de rimedo, kiu estas administrata.
+    private T* ptr_; // Puntero de rimedo, kiu estas administrata.
 
     invariant
     {
@@ -60,30 +65,33 @@ struct SDL_RAII(T)
     }
 }
 
-/** Aliaso de funkcio por liberigi rimedojn. */
-private alias SDL_Release(T) = SDL_DummyFunc;
+/* Aliaso de funkcio por liberigi rimedojn. */
+private
+{
+    alias SDL_Release(T) = SDL_DummyFunc;
 
-private alias SDL_Release(T : SDL_Window) = SDL_DestroyWindow; /// ditto
+    alias SDL_Release(T : SDL_Window) = SDL_DestroyWindow;
 
-private alias SDL_Release(T : SDL_Renderer) = SDL_DestroyRenderer; /// ditto
+    alias SDL_Release(T : SDL_Renderer) = SDL_DestroyRenderer;
 
-private alias SDL_Release(T : SDL_Texture) = SDL_DestroyTexture; /// ditto
+    alias SDL_Release(T : SDL_Texture) = SDL_DestroyTexture;
 
-private alias SDL_Release(T : SDL_Surface) = SDL_FreeSurface; /// ditto
+    alias SDL_Release(T : SDL_Surface) = SDL_FreeSurface;
 
-private alias SDL_Release(T : SDL_PixelFormat) = SDL_FreeFormat; /// ditto
+    alias SDL_Release(T : SDL_PixelFormat) = SDL_FreeFormat;
 
-private alias SDL_Release(T : SDL_Palette) = SDL_FreePalette; /// ditto
+    alias SDL_Release(T : SDL_Palette) = SDL_FreePalette;
 
-private alias SDL_Release(T : SDL_Cursor) = SDL_FreeCursor; /// ditto
+    alias SDL_Release(T : SDL_Cursor) = SDL_FreeCursor;
 
-private alias SDL_Release(T : SDL_Joystick) = SDL_JoystickClose; /// ditto
+    alias SDL_Release(T : SDL_Joystick) = SDL_JoystickClose;
 
-private alias SDL_Release(T : SDL_GameController) = SDL_GameControllerClose; /// ditto
+    alias SDL_Release(T : SDL_GameController) = SDL_GameControllerClose;
 
-private alias SDL_Release(T : SDL_Haptic) = SDL_HapticClose; /// ditto
+    alias SDL_Release(T : SDL_Haptic) = SDL_HapticClose;
+}
 
-/** Dummy-funkcio, kiu ne povas esti vokata. */
+/* Dummy-funkcio, kiu ne povas esti vokata. */
 private void SDL_DummyFunc() @nogc nothrow pure @safe
 {
     assert(0);
@@ -91,7 +99,7 @@ private void SDL_DummyFunc() @nogc nothrow pure @safe
 
 unittest
 {
-    import dunit.toolkit : assertThrow;
+    import dunit.toolkit;
     import std.stdio : writeln;
     import std.string : toStringz;
 
@@ -103,20 +111,20 @@ unittest
     {
         DerelictSDL2.load;
 
-        assert(SDL_Init(SDL_INIT_EVERYTHING) == 0);
+        SDL_Init(SDL_INIT_EVERYTHING).assertEqual(0);
 
         scope (exit) SDL_Quit();
 
         auto window = SDL_RAII!SDL_Window(
             SDL_CreateWindow(toStringz(``), 0, 0, 77, 16, SDL_WINDOW_HIDDEN));
 
-        assert(window.ptr);
+        window.ptr.assertTruthy;
 
         auto renderer = SDL_RAII!SDL_Renderer(
             SDL_CreateRenderer(window.ptr, -1, SDL_RENDERER_ACCELERATED));
 
-        assert(renderer.ptr);
+        renderer.ptr.assertTruthy;
 
-        assertThrow!SDL_Exception(SDL_RAII!SDL_Surface(null));
+        SDL_RAII!SDL_Surface(null).assertThrow!SDL_Exception;
     }
 }

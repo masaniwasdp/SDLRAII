@@ -5,7 +5,7 @@
   Copyright: 2018 masaniwa
   License:   MIT
  */
-module sdlraii.exception;
+module sdlraii.except;
 
 import derelict.sdl2.sdl;
 import std.exception : basicExceptionCtors;
@@ -27,15 +27,23 @@ class SDL_Exception : Exception
  */
 void SDL_Try(lazy int exp)
 {
-    if (exp < 0)
+    int result = void;
+
+    try
     {
-        throw new SDL_Exception(`An error occurred.`);
+        result = exp;
     }
+    catch (Throwable t)
+    {
+        throw new SDL_Exception(`An error occurred.`, t);
+    }
+
+    if (result < 0) throw new SDL_Exception(`An error occurred.`);
 }
 
 unittest
 {
-    import dunit.toolkit : assertThrow;
+    import dunit.toolkit;
     import std.stdio : writeln;
 
     debug (CI)
@@ -46,10 +54,10 @@ unittest
     {
         DerelictSDL2.load;
 
-        assert(SDL_Init(SDL_INIT_EVERYTHING) == 0);
+        SDL_Init(SDL_INIT_EVERYTHING).assertEqual(0);
 
         scope (exit) SDL_Quit();
 
-        assertThrow!SDL_Exception(SDL_Try(-1));
+        SDL_Try(-1).assertThrow!SDL_Exception;
     }
 }

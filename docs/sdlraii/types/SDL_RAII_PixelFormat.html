@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
-		<title>Function SDL_WindowRAII.ptr</title>
+		<title>Alias SDL_RAII_PixelFormat</title>
 		<link rel="stylesheet" type="text/css" href="../../styles/ddox.css"/>
 		<link rel="stylesheet" href="../../prettify/prettify.css" type="text/css"/>
 		<script type="text/javascript" src="../../scripts/jquery.js">/**/</script><script type="text/javascript" src="../../scripts/ddox.js">/**/</script>
@@ -27,12 +27,17 @@ $('#symbolSearchPane').show();</script>
 			<ul class="tree-view">
 				<li>
 					<div class="module ">
-						<a href="../../sdlraii/exception.html">exception</a>
+						<a href="../../sdlraii/except.html">except</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../sdlraii/raii.html">raii</a>
 					</div>
 				</li>
 				<li>
 					<div class="module selected">
-						<a href="../../sdlraii/video.html">video</a>
+						<a href="../../sdlraii/types.html">types</a>
 					</div>
 				</li>
 			</ul>
@@ -40,13 +45,13 @@ $('#symbolSearchPane').show();</script>
 			</ul>
 		</nav>
 		<div id="main-contents">
-			<h1>Function SDL_WindowRAII.ptr</h1><p>Puntero de la fenestro.
+			<h1>Alias SDL_RAII_PixelFormat</h1><p>Administranto de SDL_PixelFormat.
 </p>
 			<div class="prototype">
 				<code class="lang-d">
 					<div class="single-prototype">
-			<span class="pln">derelict<wbr/></span><span class="pun">.</span><span class="pln">sdl2<wbr/></span><span class="pun">.</span><span class="pln">internal<wbr/></span><span class="pun">.</span><span class="pln">sdl_types<wbr/></span><span class="pun">.</span><span class="typ">SDL_Window</span><span class="pun">*</span> <span class="pln">ptr
-			<span class="pun">()</span><span class="pln"> </span><span class="kwd">pure nothrow @property @nogc @safe</span><span class="pun">;</span>
+			<span class="kwd">alias</span> <span class="pln">SDL_RAII_PixelFormat</span>
+			 <span class="pun">=</span> <a href="../../sdlraii/raii/SDL_RAII.html"><span class="pln">SDL_RAII</span></a>!(derelict.sdl2.internal.sdl_types.SDL_PixelFormat)<span class="pun">;</span>
 					</div>
 				</code>
 			</div>
