@@ -8,10 +8,29 @@
 
 module sdlraii.exception;
 
+import derelict.sdl2.sdl;
+import std.conv : to;
 import std.exception : basicExceptionCtors;
 
 /** Escepto de la SDL biblioteko. */
 class SDL_Exception : Exception
 {
     mixin basicExceptionCtors;
+}
+
+/**
+  Ekzekuto esprimon, kiu povas malsukcesi.
+
+  Params:
+    exp = Esprimo, kiu revenas negativan nombron se ĝi malsukcesas.
+
+  Throws:
+    SDL_Exception Kiam la esprimo malsukcesas.
+ */
+void SDL_Try(lazy int exp)
+{
+    if (exp < 0)
+    {
+        throw new SDL_Exception(SDL_GetError().to!string);
+    }
 }
