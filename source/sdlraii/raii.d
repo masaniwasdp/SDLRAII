@@ -42,17 +42,14 @@ struct SDL_RAII(T)
     }
 
     /** Puntero de la rimedo. */
-    @property
+    T* ptr() @nogc nothrow @property pure @safe
+    out (result)
     {
-        T* ptr() @nogc nothrow pure @safe
-        out (result)
-        {
-            assert(result, `The result should not be null.`);
-        }
-        do
-        {
-            return ptr_;
-        }
+        assert(result, `The result should not be null.`);
+    }
+    do
+    {
+        return ptr_;
     }
 
     private T* ptr_; /// Puntero de rimedo, kiu estas administrata.
@@ -63,28 +60,30 @@ struct SDL_RAII(T)
     }
 }
 
+/** Aliaso de funkcio por liberigi rimedojn. */
 private alias SDL_Release(T) = SDL_DummyFunc;
 
-private alias SDL_Release(T : SDL_Window) = SDL_DestroyWindow;
+private alias SDL_Release(T : SDL_Window) = SDL_DestroyWindow; /// ditto
 
-private alias SDL_Release(T : SDL_Renderer) = SDL_DestroyRenderer;
+private alias SDL_Release(T : SDL_Renderer) = SDL_DestroyRenderer; /// ditto
 
-private alias SDL_Release(T : SDL_Texture) = SDL_DestroyTexture;
+private alias SDL_Release(T : SDL_Texture) = SDL_DestroyTexture; /// ditto
 
-private alias SDL_Release(T : SDL_Surface) = SDL_FreeSurface;
+private alias SDL_Release(T : SDL_Surface) = SDL_FreeSurface; /// ditto
 
-private alias SDL_Release(T : SDL_PixelFormat) = SDL_FreeFormat;
+private alias SDL_Release(T : SDL_PixelFormat) = SDL_FreeFormat; /// ditto
 
-private alias SDL_Release(T : SDL_Palette) = SDL_FreePalette;
+private alias SDL_Release(T : SDL_Palette) = SDL_FreePalette; /// ditto
 
-private alias SDL_Release(T : SDL_Cursor) = SDL_FreeCursor;
+private alias SDL_Release(T : SDL_Cursor) = SDL_FreeCursor; /// ditto
 
-private alias SDL_Release(T : SDL_Joystick) = SDL_JoystickClose;
+private alias SDL_Release(T : SDL_Joystick) = SDL_JoystickClose; /// ditto
 
-private alias SDL_Release(T : SDL_GameController) = SDL_GameControllerClose;
+private alias SDL_Release(T : SDL_GameController) = SDL_GameControllerClose; /// ditto
 
-private alias SDL_Release(T : SDL_Haptic) = SDL_HapticClose;
+private alias SDL_Release(T : SDL_Haptic) = SDL_HapticClose; /// ditto
 
+/** Dummy-funkcio, kiu ne povas esti vokata. */
 private void SDL_DummyFunc() @nogc nothrow pure @safe
 {
     assert(0);
