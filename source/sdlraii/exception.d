@@ -5,7 +5,6 @@
   Copyright: 2018 masaniwa
   License:   MIT
  */
-
 module sdlraii.exception;
 
 import derelict.sdl2.sdl;
@@ -32,5 +31,26 @@ void SDL_Try(lazy int exp)
     if (exp < 0)
     {
         throw new SDL_Exception(SDL_GetError().to!string);
+    }
+}
+
+unittest
+{
+    import dunit.toolkit;
+    import std.stdio : writeln;
+
+    debug (CI)
+    {
+        writeln(__FILE__ ~ `: Some tests using GUI are not available.`);
+    }
+    else
+    {
+        DerelictSDL2.load;
+
+        SDL_Init(SDL_INIT_EVERYTHING).assertEqual(0);
+
+        scope (exit) SDL_Quit();
+
+        SDL_Try(-1).assertThrow!SDL_Exception;
     }
 }
