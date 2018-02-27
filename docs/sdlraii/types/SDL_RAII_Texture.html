@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
-		<title>Class SDLException</title>
+		<title>Alias SDL_RAII_Texture</title>
 		<link rel="stylesheet" type="text/css" href="../../styles/ddox.css"/>
 		<link rel="stylesheet" href="../../prettify/prettify.css" type="text/css"/>
 		<script type="text/javascript" src="../../scripts/jquery.js">/**/</script><script type="text/javascript" src="../../scripts/ddox.js">/**/</script>
@@ -21,32 +21,23 @@ $('#symbolSearchPane').show();</script>
 			</div>
 			<ul class="tree-view">
 				<li class="tree-view ">
-					<div class="package ">sdlraii
+					<div class="package ">
+						<a href="../../sdlraii.html">sdlraii</a>
 					</div>
 			<ul class="tree-view">
 				<li>
+					<div class="module ">
+						<a href="../../sdlraii/except.html">except</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../sdlraii/raii.html">raii</a>
+					</div>
+				</li>
+				<li>
 					<div class="module selected">
-						<a href="../../sdlraii/exception.html">exception</a>
-					</div>
-				</li>
-				<li>
-					<div class="module ">
-						<a href="../../sdlraii/renderer.html">renderer</a>
-					</div>
-				</li>
-				<li>
-					<div class="module ">
-						<a href="../../sdlraii/surface.html">surface</a>
-					</div>
-				</li>
-				<li>
-					<div class="module ">
-						<a href="../../sdlraii/texture.html">texture</a>
-					</div>
-				</li>
-				<li>
-					<div class="module ">
-						<a href="../../sdlraii/window.html">window</a>
+						<a href="../../sdlraii/types.html">types</a>
 					</div>
 				</li>
 			</ul>
@@ -54,14 +45,13 @@ $('#symbolSearchPane').show();</script>
 			</ul>
 		</nav>
 		<div id="main-contents">
-			<h1>Class SDLException</h1><p>Escepto de la SDL-biblioteko.
+			<h1>Alias SDL_RAII_Texture</h1><p>Administranto de SDL_Texture.
 </p>
 			<div class="prototype">
 				<code class="lang-d">
 					<div class="single-prototype">
-			<span class="kwd">class</span> <span class="typ">SDLException</span>
-			<br>&nbsp;&nbsp;: <span class="pln">object<wbr/></span><span class="pun">.</span><span class="typ">Exception</span>
-			<span class="pun">;</span>
+			<span class="kwd">alias</span> <span class="pln">SDL_RAII_Texture</span>
+			 <span class="pun">=</span> <a href="../../sdlraii/raii/SDL_RAII.html"><span class="pln">SDL_RAII</span></a>!(derelict.sdl2.internal.sdl_types.SDL_Texture)<span class="pun">;</span>
 					</div>
 				</code>
 			</div>
@@ -72,7 +62,9 @@ $('#symbolSearchPane').show();</script>
 					<tr>
 						<th>Authors</th>
 						<td>
-							
+							<p>masaniwa
+</p>
+
 						</td>
 					</tr>
 					<tr>

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
-		<title>Function get</title>
+		<title>Function SDL_RAII.this</title>
 		<link rel="stylesheet" type="text/css" href="../../styles/ddox.css"/>
 		<link rel="stylesheet" href="../../prettify/prettify.css" type="text/css"/>
 		<script type="text/javascript" src="../../scripts/jquery.js">/**/</script><script type="text/javascript" src="../../scripts/ddox.js">/**/</script>
@@ -21,32 +21,23 @@ $('#symbolSearchPane').show();</script>
 			</div>
 			<ul class="tree-view">
 				<li class="tree-view ">
-					<div class="package ">sdlraii
+					<div class="package ">
+						<a href="../../sdlraii.html">sdlraii</a>
 					</div>
 			<ul class="tree-view">
 				<li>
 					<div class="module ">
-						<a href="../../sdlraii/exception.html">exception</a>
-					</div>
-				</li>
-				<li>
-					<div class="module ">
-						<a href="../../sdlraii/renderer.html">renderer</a>
+						<a href="../../sdlraii/except.html">except</a>
 					</div>
 				</li>
 				<li>
 					<div class="module selected">
-						<a href="../../sdlraii/surface.html">surface</a>
+						<a href="../../sdlraii/raii.html">raii</a>
 					</div>
 				</li>
 				<li>
 					<div class="module ">
-						<a href="../../sdlraii/texture.html">texture</a>
-					</div>
-				</li>
-				<li>
-					<div class="module ">
-						<a href="../../sdlraii/window.html">window</a>
+						<a href="../../sdlraii/types.html">types</a>
 					</div>
 				</li>
 			</ul>
@@ -54,17 +45,17 @@ $('#symbolSearchPane').show();</script>
 			</ul>
 		</nav>
 		<div id="main-contents">
-			<h1>Function get</h1><p>Akiras surfacon rimedon, kiu estas administrata.
+			<h1>Function SDL_RAII.this</h1><p>Konstruas la strukturon.
 </p>
 			<div class="prototype">
 				<code class="lang-d">
 					<div class="single-prototype">
-			<span class="pln">derelict<wbr/></span><span class="pun">.</span><span class="pln">sdl2<wbr/></span><span class="pun">.</span><span class="pln">internal<wbr/></span><span class="pun">.</span><span class="pln">sdl_types<wbr/></span><span class="pun">.</span><span class="typ">SDL_Surface</span><span class="pun">*</span> <span class="pln">get</span>
+			<span class="pln">this</span>
 			<span class="pun">(</span>
 			<br/>
-			&nbsp;&nbsp;<span class="kwd">ref </span><a href="../../sdlraii/surface/Surface.html"><span class="typ">Surface</span></a> <span class="pln">surface</span>
+			&nbsp;&nbsp;<span class="kwd">lazy </span><span class="pln">T</span><span class="pun">*</span> <span class="pln">exp</span>
 			<br/>
-			<span class="pun">)</span><span class="pln"> </span><span class="kwd">pure nothrow @nogc @safe</span><span class="pun">;</span>
+			<span class="pun">)</span><span class="pun">;</span>
 					</div>
 				</code>
 			</div>
@@ -72,11 +63,12 @@ $('#symbolSearchPane').show();</script>
 
 			<section><h2>Parameters</h2>
 <table><col class="caption"><tr><th>Name</th><th>Description</th></tr>
-<tr><td id="surface">surface</td><td> Strukturo, kiu administras surfacon rimedon.</td></tr>
+<tr><td id="exp">exp</td><td> Esprimo por akiri rimedon de la SDL biblioteko.
+              Ĉi tiu rimedo estos administrata.</td></tr>
 </table>
 </section>
-<section><h2>Returns</h2>
-<p>Surfaco rimedo.
+<section><h2>Throws</h2>
+<p>SDL_Exception Kiam malsukcesas akiri rimedon.
 </p>
 </section>
 
@@ -85,7 +77,9 @@ $('#symbolSearchPane').show();</script>
 					<tr>
 						<th>Authors</th>
 						<td>
-							
+							<p>masaniwa
+</p>
+
 						</td>
 					</tr>
 					<tr>

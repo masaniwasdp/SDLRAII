@@ -2,3 +2,4 @@ language: d
 
 script:
   - dub build
+  - dub test --debug CI

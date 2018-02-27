@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
-		<title>Function get</title>
+		<title>Class SDL_Exception</title>
 		<link rel="stylesheet" type="text/css" href="../../styles/ddox.css"/>
 		<link rel="stylesheet" href="../../prettify/prettify.css" type="text/css"/>
 		<script type="text/javascript" src="../../scripts/jquery.js">/**/</script><script type="text/javascript" src="../../scripts/ddox.js">/**/</script>
@@ -21,32 +21,23 @@ $('#symbolSearchPane').show();</script>
 			</div>
 			<ul class="tree-view">
 				<li class="tree-view ">
-					<div class="package ">sdlraii
+					<div class="package ">
+						<a href="../../sdlraii.html">sdlraii</a>
 					</div>
 			<ul class="tree-view">
 				<li>
-					<div class="module ">
-						<a href="../../sdlraii/exception.html">exception</a>
-					</div>
-				</li>
-				<li>
-					<div class="module ">
-						<a href="../../sdlraii/renderer.html">renderer</a>
-					</div>
-				</li>
-				<li>
-					<div class="module ">
-						<a href="../../sdlraii/surface.html">surface</a>
-					</div>
-				</li>
-				<li>
 					<div class="module selected">
-						<a href="../../sdlraii/texture.html">texture</a>
+						<a href="../../sdlraii/except.html">except</a>
 					</div>
 				</li>
 				<li>
 					<div class="module ">
-						<a href="../../sdlraii/window.html">window</a>
+						<a href="../../sdlraii/raii.html">raii</a>
+					</div>
+				</li>
+				<li>
+					<div class="module ">
+						<a href="../../sdlraii/types.html">types</a>
 					</div>
 				</li>
 			</ul>
@@ -54,38 +45,27 @@ $('#symbolSearchPane').show();</script>
 			</ul>
 		</nav>
 		<div id="main-contents">
-			<h1>Function get</h1><p>Akiras teksturon rimedon, kiu estas administrata.
+			<h1>Class SDL_Exception</h1><p>Escepto de la SDL biblioteko.
 </p>
 			<div class="prototype">
 				<code class="lang-d">
 					<div class="single-prototype">
-			<span class="pln">derelict<wbr/></span><span class="pun">.</span><span class="pln">sdl2<wbr/></span><span class="pun">.</span><span class="pln">internal<wbr/></span><span class="pun">.</span><span class="pln">sdl_types<wbr/></span><span class="pun">.</span><span class="typ">SDL_Texture</span><span class="pun">*</span> <span class="pln">get</span>
-			<span class="pun">(</span>
-			<br/>
-			&nbsp;&nbsp;<span class="kwd">ref </span><a href="../../sdlraii/texture/Texture.html"><span class="typ">Texture</span></a> <span class="pln">texture</span>
-			<br/>
-			<span class="pun">)</span><span class="pln"> </span><span class="kwd">pure nothrow @nogc @safe</span><span class="pun">;</span>
+			<span class="kwd">class</span> <span class="typ">SDL_Exception</span>
+			<br>&nbsp;&nbsp;: <span class="pln">object<wbr/></span><span class="pun">.</span><span class="typ">Exception</span>
+			<span class="pun">;</span>
 					</div>
 				</code>
 			</div>
-			<section></section>
-
-			<section><h2>Parameters</h2>
-<table><col class="caption"><tr><th>Name</th><th>Description</th></tr>
-<tr><td id="texture">texture</td><td> Strukturo, kiu administras teksturon rimedon.</td></tr>
-</table>
-</section>
-<section><h2>Returns</h2>
-<p>Teksturo rimedo.
-</p>
-</section>
-
+			
+			
 			<footer>
 				<table class="license-info">
 					<tr>
 						<th>Authors</th>
 						<td>
-							
+							<p>masaniwa
+</p>
+
 						</td>
 					</tr>
 					<tr>

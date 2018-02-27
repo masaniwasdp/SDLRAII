@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
-		<title>Function Window.this</title>
+		<title>Alias SDL_RAII_PixelFormat</title>
 		<link rel="stylesheet" type="text/css" href="../../styles/ddox.css"/>
 		<link rel="stylesheet" href="../../prettify/prettify.css" type="text/css"/>
 		<script type="text/javascript" src="../../scripts/jquery.js">/**/</script><script type="text/javascript" src="../../scripts/ddox.js">/**/</script>
@@ -21,32 +21,23 @@ $('#symbolSearchPane').show();</script>
 			</div>
 			<ul class="tree-view">
 				<li class="tree-view ">
-					<div class="package ">sdlraii
+					<div class="package ">
+						<a href="../../sdlraii.html">sdlraii</a>
 					</div>
 			<ul class="tree-view">
 				<li>
 					<div class="module ">
-						<a href="../../sdlraii/exception.html">exception</a>
+						<a href="../../sdlraii/except.html">except</a>
 					</div>
 				</li>
 				<li>
 					<div class="module ">
-						<a href="../../sdlraii/renderer.html">renderer</a>
-					</div>
-				</li>
-				<li>
-					<div class="module ">
-						<a href="../../sdlraii/surface.html">surface</a>
-					</div>
-				</li>
-				<li>
-					<div class="module ">
-						<a href="../../sdlraii/texture.html">texture</a>
+						<a href="../../sdlraii/raii.html">raii</a>
 					</div>
 				</li>
 				<li>
 					<div class="module selected">
-						<a href="../../sdlraii/window.html">window</a>
+						<a href="../../sdlraii/types.html">types</a>
 					</div>
 				</li>
 			</ul>
@@ -54,44 +45,26 @@ $('#symbolSearchPane').show();</script>
 			</ul>
 		</nav>
 		<div id="main-contents">
-			<h1>Function Window.this</h1><p>Konstruas la strukturon kaj fenestron.
+			<h1>Alias SDL_RAII_PixelFormat</h1><p>Administranto de SDL_PixelFormat.
 </p>
 			<div class="prototype">
 				<code class="lang-d">
 					<div class="single-prototype">
-			<span class="pln">this</span>
-			<span class="pun">(</span>
-			<br/>
-			&nbsp;&nbsp;<span class="kwd">const</span><span class="pun">(</span><span class="typ">string</span><span class="pun">)</span> <span class="pln">name</span><span class="pun">,</span>
-			<br/>
-			&nbsp;&nbsp;<span class="kwd">const</span><span class="pun">(</span><span class="typ">int</span><span class="pun">)</span> <span class="pln">width</span><span class="pun">,</span>
-			<br/>
-			&nbsp;&nbsp;<span class="kwd">const</span><span class="pun">(</span><span class="typ">int</span><span class="pun">)</span> <span class="pln">height</span>
-			<br/>
-			<span class="pun">)</span><span class="pun">;</span>
+			<span class="kwd">alias</span> <span class="pln">SDL_RAII_PixelFormat</span>
+			 <span class="pun">=</span> <a href="../../sdlraii/raii/SDL_RAII.html"><span class="pln">SDL_RAII</span></a>!(derelict.sdl2.internal.sdl_types.SDL_PixelFormat)<span class="pun">;</span>
 					</div>
 				</code>
 			</div>
-			<section></section>
-
-			<section><h2>Parameters</h2>
-<table><col class="caption"><tr><th>Name</th><th>Description</th></tr>
-<tr><td id="name">name</td><td> La nomo por doni la fenestron.</td></tr>
-<tr><td id="width">width</td><td> La larĝo de la fenestro.</td></tr>
-<tr><td id="height">height</td><td> La alceto de la fenestro.</td></tr>
-</table>
-</section>
-<section><h2>Throws</h2>
-<p>SDLException Kiam konstruado malsukcesas.
-</p>
-</section>
-
+			
+			
 			<footer>
 				<table class="license-info">
 					<tr>
 						<th>Authors</th>
 						<td>
-							
+							<p>masaniwa
+</p>
+
 						</td>
 					</tr>
 					<tr>

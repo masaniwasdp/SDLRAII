@@ -1,7 +1,10 @@
 {
     "name": "sdlraii",
     "authors": [ "masaniwa" ],
-    "dependencies": { "derelict-sdl2": "~>3.1.0-alpha.3" },
+    "dependencies": {
+        "derelict-sdl2": "~>3.1.0-alpha.3",
+        "dunit": "~>1.0.14"
+    },
     "description": "A simple RAII wrapper for SDL library.",
     "copyright": "Copyright © 2018, masaniwa",
     "license": "MIT",
