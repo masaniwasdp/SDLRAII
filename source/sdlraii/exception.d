@@ -35,7 +35,7 @@ void SDL_Try(lazy int exp)
 
 unittest
 {
-    import dunit.toolkit;
+    import dunit.toolkit : assertThrow;
     import std.stdio : writeln;
 
     debug (CI)
@@ -46,10 +46,10 @@ unittest
     {
         DerelictSDL2.load;
 
-        SDL_Init(SDL_INIT_EVERYTHING).assertEqual(0);
+        assert(SDL_Init(SDL_INIT_EVERYTHING) == 0);
 
         scope (exit) SDL_Quit();
 
-        SDL_Try(-1).assertThrow!SDL_Exception;
+        assertThrow!SDL_Exception(SDL_Try(-1));
     }
 }

@@ -5,7 +5,6 @@
   Copyright: 2018 masaniwa
   License:   MIT
  */
-
 module sdlraii.raii;
 
 import derelict.sdl2.sdl;
@@ -22,14 +21,15 @@ struct SDL_RAII(T)
       Konstruas la strukturon.
 
       Params:
-        expression = Esprimo por akiri rimedon de la SDL biblioteko. Ĉi tiu rimedo estos administrata.
+        exp = Esprimo por akiri rimedon de la SDL biblioteko.
+              Ĉi tiu rimedo estos administrata.
 
       Throws:
-        SDL_Exception Kiam malsukcesis akiri rimedon.
+        SDL_Exception Kiam malsukcesas akiri rimedon.
      */
-    this(lazy scope T* expression)
+    this(lazy T* exp)
     {
-        ptr_ = expression;
+        ptr_ = exp;
 
         if (!ptr_) throw new SDL_Exception(`Failed to get the resource.`);
     }
@@ -80,12 +80,12 @@ private void SDL_DummyFunc() @nogc nothrow pure @safe
 
 unittest
 {
+    import dunit.toolkit : assertThrow;
+    import std.stdio : writeln;
     import std.string : toStringz;
 
     debug (CI)
     {
-        import std.stdio : writeln;
-
         writeln(__FILE__ ~ `: Some tests using GUI are not available.`);
     }
     else
@@ -105,5 +105,7 @@ unittest
             SDL_CreateRenderer(window.ptr, -1, SDL_RENDERER_ACCELERATED));
 
         assert(renderer.ptr);
+
+        assertThrow!SDL_Exception(SDL_RAII!SDL_Surface(null));
     }
 }

@@ -5,7 +5,6 @@
   Copyright: 2018 masaniwa
   License:   MIT
  */
-
 module sdlraii;
 
 public import sdlraii.exception;
