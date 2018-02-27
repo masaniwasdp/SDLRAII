@@ -73,6 +73,18 @@ private alias SDL_Release(T : SDL_Texture) = SDL_DestroyTexture;
 
 private alias SDL_Release(T : SDL_Surface) = SDL_FreeSurface;
 
+private alias SDL_Release(T : SDL_PixelFormat) = SDL_FreeFormat;
+
+private alias SDL_Release(T : SDL_Palette) = SDL_FreePalette;
+
+private alias SDL_Release(T : SDL_Cursor) = SDL_FreeCursor;
+
+private alias SDL_Release(T : SDL_Joystick) = SDL_JoystickClose;
+
+private alias SDL_Release(T : SDL_GameController) = SDL_GameControllerClose;
+
+private alias SDL_Release(T : SDL_Haptic) = SDL_HapticClose;
+
 private void SDL_DummyFunc() @nogc nothrow pure @safe
 {
     assert(0);
