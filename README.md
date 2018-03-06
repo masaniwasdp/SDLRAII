@@ -10,7 +10,7 @@ La biblioteko provizas strukturon, kiu administras rimedojn de SDL biblioteko.
 Ĉi strukturo aŭtomate liberigas la rimedojn kun RAII.
 Ĝi ankaŭ provizas funkcion por uzado de eraroj.
 
-## Ekzenplo
+## Ekzemplo
 
 ``` d
 import sdlraii;
