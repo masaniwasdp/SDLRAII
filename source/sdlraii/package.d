@@ -8,46 +8,31 @@
   Examples:
     ---
     import sdlraii;
-    import std.conv : to;
-    import std.stdio : writeln;
     import std.string : toStringz;
 
     void main()
     {
+        // Komencas SDL bibliotekon. Escepto estas ĵetita se ĝi malsukcesas.
         DerelictSDL2.load;
 
-        if (SDL_Init(SDL_INIT_EVERYTHING) != 0) return;
+        SDL_Try(SDL_Init(SDL_INIT_EVERYTHING));
 
         scope (exit) SDL_Quit();
 
-        try
-        {
-            // Kreas administranton de fenestro.
-            auto window = SDL_RAII_Window(
-                SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
+        // Kreas fenestron kaj rendiston, kiuj estos liberigitaj de RAII.
+        auto window = SDL_RAII_Window(SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
 
-            // Kreas administranton de rendisto.
-            auto renderer = SDL_RAII_Renderer(
-                SDL_CreateRenderer(window.ptr, -1, SDL_RENDERER_ACCELERATED));
+        auto renderer = SDL_RAII_Renderer(SDL_CreateRenderer(window.ptr, -1, SDL_RENDERER_ACCELERATED));
 
-            // Ŝanĝas desegnan koloron.
-            SDL_Try(SDL_SetRenderDrawColor(renderer.ptr, 7, 7, 1, 6));
+        // Plenigas la ekranon. Escepto estos ĵetita se ĝi malsukcesas.
+        SDL_Try(SDL_SetRenderDrawColor(renderer.ptr, 7, 7, 1, 6));
 
-            // Plenigas la ekranon.
-            SDL_Try(SDL_RenderFillRect(renderer.ptr, null));
+        SDL_Try(SDL_RenderFillRect(renderer.ptr, null));
 
-            // Ĝisdatigas la ekranon.
-            SDL_RenderPresent(renderer.ptr);
+        SDL_RenderPresent(renderer.ptr);
 
-            // Atendas 7716 sekundojn.
-            SDL_Delay(7716);
-        }
-        catch (SDL_Exception)
-        {
-            SDL_GetError()
-                .to!string
-                .writeln;
-        }
+        // Atendas 7.716 sekundojn.
+        SDL_Delay(7716);
     }
     ---
  */

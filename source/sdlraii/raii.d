@@ -9,6 +9,8 @@ module sdlraii.raii;
 
 import derelict.sdl2.sdl;
 import sdlraii.except : SDL_Exception;
+import std.conv : to;
+import std.exception : enforce;
 
 /** Administras rimedon. */
 struct SDL_RAII(T)
@@ -19,24 +21,15 @@ struct SDL_RAII(T)
       Konstruas la strukturon.
 
       Params:
-        exp = Esprimo por akiri rimedon de la SDL biblioteko.
-              Ĉi tiu rimedo estos administrata.
+        expression = Esprimo por akiri rimedon de la SDL biblioteko. Ĉi tiu rimedo estos administrata.
 
       Throws:
         SDL_Exception Kiam malsukcesas akiri rimedon.
      */
-    this(lazy T* exp)
+    this(lazy T* expression)
     {
-        try
-        {
-            ptr_ = exp;
-        }
-        catch (Throwable t)
-        {
-            throw new SDL_Exception(`Failed to get the resource.`, t);
-        }
-
-        if (!ptr_) throw new SDL_Exception(`Failed to get the resource.`);
+        ptr_ = expression
+            .enforce(new SDL_Exception(SDL_GetError().to!string));
     }
 
     this(this) @disable;
@@ -101,7 +94,6 @@ unittest
 {
     import dunit.toolkit;
     import std.stdio : writeln;
-    import std.string : toStringz;
 
     debug (CI)
     {
@@ -115,13 +107,11 @@ unittest
 
         scope (exit) SDL_Quit();
 
-        auto window = SDL_RAII!SDL_Window(
-            SDL_CreateWindow(toStringz(``), 0, 0, 77, 16, SDL_WINDOW_HIDDEN));
+        auto window = SDL_RAII!SDL_Window(SDL_CreateWindow(null, 0, 0, 77, 16, SDL_WINDOW_HIDDEN));
 
         window.ptr.assertTruthy;
 
-        auto renderer = SDL_RAII!SDL_Renderer(
-            SDL_CreateRenderer(window.ptr, -1, SDL_RENDERER_ACCELERATED));
+        auto renderer = SDL_RAII!SDL_Renderer(SDL_CreateRenderer(window.ptr, -1, SDL_RENDERER_ACCELERATED));
 
         renderer.ptr.assertTruthy;
 

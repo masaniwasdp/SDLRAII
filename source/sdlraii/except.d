@@ -8,6 +8,7 @@
 module sdlraii.except;
 
 import derelict.sdl2.sdl;
+import std.conv : to;
 import std.exception : basicExceptionCtors;
 
 /** Escepto de la SDL biblioteko. */
@@ -20,25 +21,17 @@ class SDL_Exception : Exception
   Ekzekuto esprimon, kiu povas malsukcesi.
 
   Params:
-    exp = Esprimo, kiu revenas negativan nombron se ĝi malsukcesas.
+    expression = Esprimo, kiu revenas negativan nombron se ĝi malsukcesas.
 
   Throws:
     SDL_Exception Kiam la esprimo malsukcesas.
  */
-void SDL_Try(lazy int exp)
+void SDL_Try(lazy int expression)
 {
-    int result = void;
-
-    try
+    if (expression < 0)
     {
-        result = exp;
+        throw new SDL_Exception(SDL_GetError().to!string);
     }
-    catch (Throwable t)
-    {
-        throw new SDL_Exception(`An error occurred.`, t);
-    }
-
-    if (result < 0) throw new SDL_Exception(`An error occurred.`);
 }
 
 unittest
