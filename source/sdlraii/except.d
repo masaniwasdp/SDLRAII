@@ -20,15 +20,13 @@ class SDL_Exception : Exception
 /**
   Ekzekuto esprimon, kiu povas malsukcesi.
 
-  Params:
-    expression = Esprimo, kiu revenas negativan nombron se ĝi malsukcesas.
+  Params: exp = Esprimo, kiu revenas negativan nombron se ĝi malsukcesas.
 
-  Throws:
-    SDL_Exception Kiam la esprimo malsukcesas.
+  Throws: SDL_Exception Kiam la esprimo malsukcesas.
  */
-void SDL_Try(lazy int expression)
+void SDL_Try(lazy int exp)
 {
-    if (expression < 0)
+    if (exp < 0)
     {
         throw new SDL_Exception(SDL_GetError().to!string);
     }

@@ -20,69 +20,64 @@ struct SDL_RAII(T)
     /**
       Konstruas la strukturon.
 
-      Params:
-        expression = Esprimo por akiri rimedon de la SDL biblioteko. Ĉi tiu rimedo estos administrata.
+      Params: exp = Esprimo por akiri rimedon de la SDL biblioteko.
+                    Ĉi tiu rimedo estos administrata.
 
-      Throws:
-        SDL_Exception Kiam malsukcesas akiri rimedon.
+      Throws: SDL_Exception Kiam malsukcesas akiri rimedon.
      */
-    this(lazy T* expression)
+    this(lazy T* exp)
     {
-        ptr_ = expression
-            .enforce(new SDL_Exception(SDL_GetError().to!string));
+        res = exp.enforce(new SDL_Exception(SDL_GetError().to!string));
     }
 
     this(this) @disable;
 
     ~this()
     {
-        SDL_Release!T(ptr_);
+        SDL_Release!T(res);
     }
 
     /** Puntero de la rimedo. */
     T* ptr() @nogc nothrow @property pure @safe
-    out (result)
+    out (val)
     {
-        assert(result, `The result should not be null.`);
+        assert(val, `The return value should not be null.`);
     }
     do
     {
-        return ptr_;
+        return res;
     }
 
-    private T* ptr_; // Puntero de rimedo, kiu estas administrata.
+    private T* res; // Puntero de rimedo, kiu estas administrata.
 
     invariant
     {
-        assert(ptr_);
+        assert(res);
     }
 }
 
 /* Aliaso de funkcio por liberigi rimedojn. */
-private
-{
-    alias SDL_Release(T) = SDL_DummyFunc;
+private alias SDL_Release(T) = SDL_DummyFunc;
 
-    alias SDL_Release(T : SDL_Window) = SDL_DestroyWindow;
+private alias SDL_Release(T : SDL_Window) = SDL_DestroyWindow;
 
-    alias SDL_Release(T : SDL_Renderer) = SDL_DestroyRenderer;
+private alias SDL_Release(T : SDL_Renderer) = SDL_DestroyRenderer;
 
-    alias SDL_Release(T : SDL_Texture) = SDL_DestroyTexture;
+private alias SDL_Release(T : SDL_Texture) = SDL_DestroyTexture;
 
-    alias SDL_Release(T : SDL_Surface) = SDL_FreeSurface;
+private alias SDL_Release(T : SDL_Surface) = SDL_FreeSurface;
 
-    alias SDL_Release(T : SDL_PixelFormat) = SDL_FreeFormat;
+private alias SDL_Release(T : SDL_PixelFormat) = SDL_FreeFormat;
 
-    alias SDL_Release(T : SDL_Palette) = SDL_FreePalette;
+private alias SDL_Release(T : SDL_Palette) = SDL_FreePalette;
 
-    alias SDL_Release(T : SDL_Cursor) = SDL_FreeCursor;
+private alias SDL_Release(T : SDL_Cursor) = SDL_FreeCursor;
 
-    alias SDL_Release(T : SDL_Joystick) = SDL_JoystickClose;
+private alias SDL_Release(T : SDL_Joystick) = SDL_JoystickClose;
 
-    alias SDL_Release(T : SDL_GameController) = SDL_GameControllerClose;
+private alias SDL_Release(T : SDL_GameController) = SDL_GameControllerClose;
 
-    alias SDL_Release(T : SDL_Haptic) = SDL_HapticClose;
-}
+private alias SDL_Release(T : SDL_Haptic) = SDL_HapticClose;
 
 /* Dummy-funkcio, kiu ne povas esti vokata. */
 private void SDL_DummyFunc() @nogc nothrow pure @safe

@@ -1,0 +1,10 @@
+name        "sdlraii"
+authors     "masaniwa"
+description "A simple RAII wrapper for SDL library."
+copyright   "Copyright © 2018, masaniwa"
+license     "MIT"
+
+dependency "derelict-sdl2" version="~>3.1.0-alpha.3"
+dependency "dunit"         version="~>1.0.14"
+
+targetPath "$PACKAGE_DIR/build/"
