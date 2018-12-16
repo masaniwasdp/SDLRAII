@@ -1,6 +1,6 @@
 name        "sdlraii"
-authors     "masaniwa"
 description "A simple RAII wrapper for SDL library."
+authors     "masaniwa"
 copyright   "Copyright © 2018, masaniwa"
 license     "MIT"
 
