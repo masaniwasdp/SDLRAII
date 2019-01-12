@@ -46,6 +46,6 @@ void main()
 Vidu [API dokumentadon](https://masaniwasdp.github.com/SDLRAII/sdlraii).
 
 ## Permesilo
-© 2018, masaniwa
+© 2019, masaniwa
 
 La programaro estas licencita sub la [MIT](https://github.com/masaniwasdp/SDLRAII/blob/master/LICENCE).
