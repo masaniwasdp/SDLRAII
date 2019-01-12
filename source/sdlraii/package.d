@@ -2,7 +2,7 @@
   Provizas strukturojn, kiuj administras rimedojn de la SDL biblioteko.
 
   Authors:   masaniwa
-  Copyright: 2018 masaniwa
+  Copyright: 2019 masaniwa
   License:   MIT
 
   Examples:
