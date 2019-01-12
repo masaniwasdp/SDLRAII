@@ -7,9 +7,18 @@
  */
 module sdlraii.except;
 
-import derelict.sdl2.sdl;
 import std.conv : to;
 import std.exception : basicExceptionCtors;
+
+version (unittest)
+{
+    import dunit.toolkit;
+    import sdlraii.testmock.sdl;
+}
+else
+{
+    import derelict.sdl2.sdl;
+}
 
 /** Escepto de la SDL biblioteko. */
 class SDL_Exception : Exception
@@ -34,21 +43,11 @@ void SDL_Try(lazy int exp)
 
 unittest
 {
-    import dunit.toolkit;
-    import std.stdio : writeln;
+    SDL_GetError_value = "Alice";
 
-    debug (CI)
-    {
-        writeln(__FILE__ ~ `: Some tests using GUI are not available.`);
-    }
-    else
-    {
-        DerelictSDL2.load;
+    SDL_Try(1);
 
-        SDL_Init(SDL_INIT_EVERYTHING).assertEqual(0);
+    SDL_Try(-1).assertThrow!SDL_Exception("Alice");
 
-        scope (exit) SDL_Quit();
-
-        SDL_Try(-1).assertThrow!SDL_Exception;
-    }
+    SDL_Try(-2).assertThrow!SDL_Exception("Alice");
 }

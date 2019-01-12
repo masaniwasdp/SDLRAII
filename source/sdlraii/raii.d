@@ -88,13 +88,8 @@ private void SDL_DummyFunc() @nogc nothrow pure @safe
 unittest
 {
     import dunit.toolkit;
-    import std.stdio : writeln;
 
-    debug (CI)
-    {
-        writeln(__FILE__ ~ `: Some tests using GUI are not available.`);
-    }
-    else
+    static if (0)
     {
         DerelictSDL2.load;
 
