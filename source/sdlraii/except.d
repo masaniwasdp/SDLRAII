@@ -43,11 +43,11 @@ void SDL_Try(lazy int exp)
 
 unittest
 {
-    SDL_GetError_value = "Alice";
+    SDL_GetError.value = `Alice`;
 
     SDL_Try(1);
+    SDL_Try(0);
 
-    SDL_Try(-1).assertThrow!SDL_Exception("Alice");
-
-    SDL_Try(-2).assertThrow!SDL_Exception("Alice");
+    SDL_Try(-1).assertThrow!SDL_Exception(`Alice`);
+    SDL_Try(-2).assertThrow!SDL_Exception(`Alice`);
 }

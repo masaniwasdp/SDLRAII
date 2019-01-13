@@ -7,8 +7,17 @@
  */
 module sdlraii.types;
 
-import derelict.sdl2.sdl;
 import sdlraii.raii : SDL_RAII;
+
+version (unittest)
+{
+    import dunit.toolkit;
+    import sdlraii.testmock.sdl;
+}
+else
+{
+    import derelict.sdl2.sdl;
+}
 
 /** Aliaso de administranto. */
 alias SDL_RAII_Window = SDL_RAII!SDL_Window;
