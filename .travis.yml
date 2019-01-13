@@ -2,4 +2,7 @@ language: d
 
 script:
   - dub build
-  - dub test --debug CI
+  - dub test -b unittest-cov
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
