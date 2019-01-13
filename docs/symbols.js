@@ -5,7 +5,7 @@ var symbols = [
 {name: 'sdlraii.except.SDL_Try', kind: "functiondeclaration", path: './sdlraii/except/SDL_Try.html', attributes: []},
 {name: 'sdlraii.raii', kind: "module", path: './sdlraii/raii.html', attributes: []},
 {name: 'sdlraii.raii.SDL_RAII', kind: "structdeclaration", path: './sdlraii/raii/SDL_RAII.html', attributes: []},
-{name: 'sdlraii.raii.SDL_RAII.ptr', kind: "functiondeclaration", path: './sdlraii/raii/SDL_RAII.ptr.html', attributes: ["pure", "nothrow", "nogc", "property", "safe"]},
+{name: 'sdlraii.raii.SDL_RAII.ptr', kind: "functiondeclaration", path: './sdlraii/raii/SDL_RAII.ptr.html', attributes: ["pure", "nothrow", "nogc", "safe"]},
 {name: 'sdlraii.raii.SDL_RAII.this', kind: "functiondeclaration", path: './sdlraii/raii/SDL_RAII.this.html', attributes: []},
 {name: 'sdlraii.types', kind: "module", path: './sdlraii/types.html', attributes: []},
 {name: 'sdlraii.types.SDL_RAII_Cursor', kind: "aliasdeclaration", path: './sdlraii/types/SDL_RAII_Cursor.html', attributes: []},
