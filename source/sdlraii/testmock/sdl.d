@@ -1,26 +1,26 @@
 module sdlraii.testmock.sdl;
 
-import sdlraii.testmock.framework;
+import sdlraii.testmock.util;
 
-mixin(DefineStruct!`SDL_Window`);
-mixin(DefineStruct!`SDL_Renderer`);
-mixin(DefineStruct!`SDL_Texture`);
-mixin(DefineStruct!`SDL_Surface`);
-mixin(DefineStruct!`SDL_PixelFormat`);
-mixin(DefineStruct!`SDL_Palette`);
-mixin(DefineStruct!`SDL_Cursor`);
-mixin(DefineStruct!`SDL_Joystick`);
-mixin(DefineStruct!`SDL_GameController`);
-mixin(DefineStruct!`SDL_Haptic`);
+struct SDL_Window {}
+struct SDL_Renderer {}
+struct SDL_Texture {}
+struct SDL_Surface {}
+struct SDL_PixelFormat {}
+struct SDL_Palette {}
+struct SDL_Cursor {}
+struct SDL_Joystick {}
+struct SDL_GameController {}
+struct SDL_Haptic {}
 
-mixin(DefineFunctionMock!(`SDL_GetError`, `const(char)*`));
-mixin(DefineFunctionMock!(`SDL_DestroyWindow`, `void`, `SDL_Window*`));
-mixin(DefineFunctionMock!(`SDL_DestroyRenderer`, `void`, `SDL_Renderer*`));
-mixin(DefineFunctionMock!(`SDL_DestroyTexture`, `void`, `SDL_Texture*`));
-mixin(DefineFunctionMock!(`SDL_FreeSurface`, `void`, `SDL_Surface*`));
-mixin(DefineFunctionMock!(`SDL_FreeFormat`, `void`, `SDL_PixelFormat*`));
-mixin(DefineFunctionMock!(`SDL_FreePalette`, `void`, `SDL_Palette*`));
-mixin(DefineFunctionMock!(`SDL_FreeCursor`, `void`, `SDL_Cursor*`));
-mixin(DefineFunctionMock!(`SDL_JoystickClose`, `void`, `SDL_Joystick*`));
-mixin(DefineFunctionMock!(`SDL_GameControllerClose`, `void`, `SDL_GameController*`));
-mixin(DefineFunctionMock!(`SDL_HapticClose`, `void`, `SDL_Haptic*`));
+FunctionMock!(const(char)*) SDL_GetError;
+FunctionMock!(void, SDL_Window*) SDL_DestroyWindow;
+FunctionMock!(void, SDL_Renderer*) SDL_DestroyRenderer;
+FunctionMock!(void, SDL_Texture*) SDL_DestroyTexture;
+FunctionMock!(void, SDL_Surface*) SDL_FreeSurface;
+FunctionMock!(void, SDL_PixelFormat*) SDL_FreeFormat;
+FunctionMock!(void, SDL_Palette*) SDL_FreePalette;
+FunctionMock!(void, SDL_Cursor*) SDL_FreeCursor;
+FunctionMock!(void, SDL_Joystick*) SDL_JoystickClose;
+FunctionMock!(void, SDL_GameController*) SDL_GameControllerClose;
+FunctionMock!(void, SDL_Haptic*) SDL_HapticClose;

@@ -91,7 +91,6 @@ private alias SDL_Release(T : SDL_Haptic) = SDL_HapticClose;
 /* Dummy-funkcio, kiu ne povas esti vokata. */
 private void SDL_DummyFunc() @nogc nothrow pure @safe
 {
-    assert(0);
 }
 
 unittest
