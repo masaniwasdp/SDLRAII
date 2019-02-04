@@ -59,21 +59,21 @@ $('#symbolSearchPane').show();</script>
 
     </span><span class="typ">SDL_Try</span><span class="pun">(</span><span class="typ">SDL_Init</span><span class="pun">(</span><span class="pln">SDL_INIT_EVERYTHING</span><span class="pun">));
 
-    </span><span class="kwd">scope </span><span class="pun">(</span><span class="pln">exit</span><span class="pun">) </span><span class="typ">SDL_Quit</span><span class="pun">();
+    </span><span class="kwd">scope </span><span class="pun">(</span><span class="pln">exit</span><span class="pun">) { </span><span class="typ">SDL_Quit</span><span class="pun">(); }
 
     </span><span class="com">// Kreas fenestron kaj rendiston, kiuj estos liberigitaj de RAII.
-    </span><span class="kwd">auto </span><span class="pln">window </span><span class="pun">= </span><span class="typ">SDL_RAII_Window</span><span class="pun">(</span><span class="typ">SDL_CreateWindow</span><span class="pun">(</span><span class="pln">toStringz</span><span class="pun">(</span><span class="str">`Alice`</span><span class="pun">), </span><span class="lit">0</span><span class="pun">, </span><span class="lit">0</span><span class="pun">, </span><span class="lit">77</span><span class="pun">, </span><span class="lit">16</span><span class="pun">, </span><span class="pln">SDL_WINDOW_SHOWN</span><span class="pun">));
+    </span><span class="kwd">auto </span><span class="pln">wctx </span><span class="pun">= </span><span class="typ">SDL_RAII_Window</span><span class="pun">(</span><span class="typ">SDL_CreateWindow</span><span class="pun">(</span><span class="pln">toStringz</span><span class="pun">(</span><span class="str">`Alice`</span><span class="pun">), </span><span class="lit">0</span><span class="pun">, </span><span class="lit">0</span><span class="pun">, </span><span class="lit">77</span><span class="pun">, </span><span class="lit">16</span><span class="pun">, </span><span class="pln">SDL_WINDOW_SHOWN</span><span class="pun">));
 
-    </span><span class="kwd">auto </span><span class="pln">renderer </span><span class="pun">= </span><span class="typ">SDL_RAII_Renderer</span><span class="pun">(</span><span class="typ">SDL_CreateRenderer</span><span class="pun">(</span><span class="pln">window<wbr/></span><span class="pun">.</span><span class="pln">ptr</span><span class="pun">, -</span><span class="lit">1</span><span class="pun">, </span><span class="pln">SDL_RENDERER_ACCELERATED</span><span class="pun">));
+    </span><span class="kwd">auto </span><span class="pln">rctx </span><span class="pun">= </span><span class="typ">SDL_RAII_Renderer</span><span class="pun">(</span><span class="typ">SDL_CreateRenderer</span><span class="pun">(</span><span class="pln">wctx<wbr/></span><span class="pun">.</span><span class="pln">ptr</span><span class="pun">, -</span><span class="lit">1</span><span class="pun">, </span><span class="pln">SDL_RENDERER_ACCELERATED</span><span class="pun">));
 
     </span><span class="com">// Plenigas la ekranon. Escepto estos ĵetita se ĝi malsukcesas.
-    </span><span class="typ">SDL_Try</span><span class="pun">(</span><span class="typ">SDL_SetRenderDrawColor</span><span class="pun">(</span><span class="pln">renderer<wbr/></span><span class="pun">.</span><span class="pln">ptr</span><span class="pun">, </span><span class="lit">7</span><span class="pun">, </span><span class="lit">7</span><span class="pun">, </span><span class="lit">1</span><span class="pun">, </span><span class="lit">6</span><span class="pun">));
+    </span><span class="typ">SDL_Try</span><span class="pun">(</span><span class="typ">SDL_SetRenderDrawColor</span><span class="pun">(</span><span class="pln">rctx<wbr/></span><span class="pun">.</span><span class="pln">ptr</span><span class="pun">, </span><span class="lit">7</span><span class="pun">, </span><span class="lit">7</span><span class="pun">, </span><span class="lit">1</span><span class="pun">, </span><span class="lit">6</span><span class="pun">));
 
-    </span><span class="typ">SDL_Try</span><span class="pun">(</span><span class="typ">SDL_RenderFillRect</span><span class="pun">(</span><span class="pln">renderer<wbr/></span><span class="pun">.</span><span class="pln">ptr</span><span class="pun">, </span><span class="kwd">null</span><span class="pun">));
+    </span><span class="typ">SDL_Try</span><span class="pun">(</span><span class="typ">SDL_RenderFillRect</span><span class="pun">(</span><span class="pln">rctx<wbr/></span><span class="pun">.</span><span class="pln">ptr</span><span class="pun">, </span><span class="kwd">null</span><span class="pun">));
 
-    </span><span class="typ">SDL_RenderPresent</span><span class="pun">(</span><span class="pln">renderer<wbr/></span><span class="pun">.</span><span class="pln">ptr</span><span class="pun">);
+    </span><span class="typ">SDL_RenderPresent</span><span class="pun">(</span><span class="pln">rctx<wbr/></span><span class="pun">.</span><span class="pln">ptr</span><span class="pun">);
 
-    </span><span class="com">// Atendas 7.716 sekundojn.
+    </span><span class="com">// Atendas iomete.
     </span><span class="typ">SDL_Delay</span><span class="pun">(</span><span class="lit">7716</span><span class="pun">);
 }</span></code></pre>
 </section>
