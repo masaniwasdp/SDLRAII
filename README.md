@@ -24,21 +24,21 @@ void main()
 
     SDL_Try(SDL_Init(SDL_INIT_EVERYTHING));
 
-    scope (exit) SDL_Quit();
+    scope (exit) { SDL_Quit(); }
 
     // Kreas fenestron kaj rendiston, kiuj estos liberigitaj de RAII.
-    auto window = SDL_RAII_Window(SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
+    auto wctx = SDL_RAII_Window(SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
 
-    auto renderer = SDL_RAII_Renderer(SDL_CreateRenderer(window.ptr, -1, SDL_RENDERER_ACCELERATED));
+    auto rctx = SDL_RAII_Renderer(SDL_CreateRenderer(wctx.ptr, -1, SDL_RENDERER_ACCELERATED));
 
     // Plenigas la ekranon. Escepto estos ĵetita se ĝi malsukcesas.
-    SDL_Try(SDL_SetRenderDrawColor(renderer.ptr, 7, 7, 1, 6));
+    SDL_Try(SDL_SetRenderDrawColor(rctx.ptr, 7, 7, 1, 6));
 
-    SDL_Try(SDL_RenderFillRect(renderer.ptr, null));
+    SDL_Try(SDL_RenderFillRect(rctx.ptr, null));
 
-    SDL_RenderPresent(renderer.ptr);
+    SDL_RenderPresent(rctx.ptr);
 
-    // Atendas 7.716 sekundojn.
+    // Atendas iomete.
     SDL_Delay(7716);
 }
 ```
