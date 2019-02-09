@@ -19,32 +19,34 @@ else
     import derelict.sdl2.sdl;
 }
 
-/** Aliaso de administranto. */
-alias SDL_RAII_Window = SDL_RAII!SDL_Window;
+mixin template SDL_Gen_RAIIHolder(T)
+{
+    SDL_RAII!T SDL_RAIIHolder(lazy T* exp)
+    {
+        return typeof(return)(exp);
+    }
+}
 
-/** ditto */
-alias SDL_RAII_Renderer = SDL_RAII!SDL_Renderer;
+mixin SDL_Gen_RAIIHolder!SDL_Window;
+mixin SDL_Gen_RAIIHolder!SDL_Renderer;
+mixin SDL_Gen_RAIIHolder!SDL_Texture;
+mixin SDL_Gen_RAIIHolder!SDL_Surface;
+mixin SDL_Gen_RAIIHolder!SDL_PixelFormat;
+mixin SDL_Gen_RAIIHolder!SDL_Palette;
+mixin SDL_Gen_RAIIHolder!SDL_Cursor;
+mixin SDL_Gen_RAIIHolder!SDL_Joystick;
+mixin SDL_Gen_RAIIHolder!SDL_GameController;
+mixin SDL_Gen_RAIIHolder!SDL_Haptic;
 
-/** ditto */
-alias SDL_RAII_Texture = SDL_RAII!SDL_Texture;
+unittest
+{
+    {
+        SDL_DestroyWindow.callcount = 0;
 
-/** ditto */
-alias SDL_RAII_Surface = SDL_RAII!SDL_Surface;
+        SDL_Window window;
 
-/** ditto */
-alias SDL_RAII_PixelFormat = SDL_RAII!SDL_PixelFormat;
+        SDL_RAIIHolder(&window).ptr.assertTruthy;
 
-/** ditto */
-alias SDL_RAII_Palette = SDL_RAII!SDL_Palette;
-
-/** ditto */
-alias SDL_RAII_Cursor = SDL_RAII!SDL_Cursor;
-
-/** ditto */
-alias SDL_RAII_Joystick = SDL_RAII!SDL_Joystick;
-
-/** ditto */
-alias SDL_RAII_GameController = SDL_RAII!SDL_GameController;
-
-/** ditto */
-alias SDL_RAII_Haptic = SDL_RAII!SDL_Haptic;
+        SDL_DestroyWindow.callcount.assertEqual(1);
+    }
+}
