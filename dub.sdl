@@ -6,3 +6,11 @@ license "MIT"
 dependency "derelict-sdl2" version="~>3.1.0-alpha.4"
 dependency "dunit" version="~>1.0.14"
 targetPath "$PACKAGE_DIR/build/"
+configuration "default" {
+    targetType "library"
+}
+configuration "ddox-windows" {
+    platforms "windows"
+    buildOptions "syntaxOnly"
+    dflags "-Df__dummy.html" "-Xfdocs.json"
+}
