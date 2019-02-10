@@ -1,9 +1,30 @@
 /**
-  Provizas aliasojn de administrantoj.
+  Provizas aliasojn de la administrantoj.
+
+  `SDL_RAIIHolder(lazy T* exp)` estas aliason de `SDL_RAII!T(lazy T* exp)`.
 
   Authors:   masaniwa
   Copyright: 2019 masaniwa
   License:   MIT
+
+  Examples:
+    ---
+    import sdlraii; // derelict.sdl2.sdl, sdlraii.except, sdlraii.types
+    import std.string : toStringz;
+
+    void main()
+    {
+        DerelictSDL2.load;
+
+        if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
+        {
+            scope (exit) { SDL_Quit(); }
+
+            // Kreas fenestron, kiuj estos liberigitaj de RAII.
+            auto w = SDL_RAII_Holder(SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
+        }
+    }
+    ---
  */
 module sdlraii.types;
 
@@ -20,14 +41,6 @@ else
     import derelict.sdl2.sdl;
 }
 
-mixin template SDL_Gen_RAIIHolder(T)
-{
-    SDL_RAII!T SDL_RAIIHolder(lazy T* exp)
-    {
-        return typeof(return)(exp);
-    }
-}
-
 mixin SDL_Gen_RAIIHolder!SDL_Window;
 mixin SDL_Gen_RAIIHolder!SDL_Renderer;
 mixin SDL_Gen_RAIIHolder!SDL_Texture;
@@ -38,6 +51,25 @@ mixin SDL_Gen_RAIIHolder!SDL_Cursor;
 mixin SDL_Gen_RAIIHolder!SDL_Joystick;
 mixin SDL_Gen_RAIIHolder!SDL_GameController;
 mixin SDL_Gen_RAIIHolder!SDL_Haptic;
+
+/* Generas funkcion por krei la administrantojn. */
+private mixin template SDL_Gen_RAIIHolder(T)
+{
+    /*
+      Kreas la administranton de la rimedo.
+
+      Params: exp = Esprimo por akiri rimedon de la SDL biblioteko.
+                    Ĉi tiu rimedo estos administrata per la administranto.
+
+      Returns: Administranto de la rimedo.
+
+      Throws: `SDL_Exception` Kiam malsukcesas akiri rimedon.
+     */
+    SDL_RAII!T SDL_RAIIHolder(lazy T* exp)
+    {
+        return typeof(return)(exp);
+    }
+}
 
 unittest
 {
