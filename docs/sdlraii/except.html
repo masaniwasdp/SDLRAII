@@ -48,7 +48,21 @@ $('#symbolSearchPane').show();</script>
 			<h1>Module sdlraii.except</h1><p>Provizas esceptojn de la SDL biblioteko.
 </p><section></section>
 
-			<section></section>
+			<section><section><h2>Examples</h2>
+<pre class="code"><code class="lang-d"><span class="kwd">import <a href="../sdlraii.html"></span><span class="pln">sdlraii</span></a><span class="pun">; </span><span class="com">// derelict.sdl2.sdl, sdlraii.except, sdlraii.types
+</span><span class="kwd">import </span><span class="pln">std<wbr/></span><span class="pun">.</span><span class="typ">string </span><span class="pun">: </span><span class="pln">toStringz</span><span class="pun">;
+
+</span><span class="typ">void </span><span class="pln">main</span><span class="pun">()
+{
+    </span><span class="com">// Komencas SDL bibliotekon. Escepto estas ĵetita se ĝi malsukcesas.
+    </span><span class="typ">DerelictSDL2<wbr/></span><span class="pun">.</span><span class="pln">load</span><span class="pun">;
+
+    <a href="../sdlraii/except/SDL_Try.html"></span><span class="typ">SDL_Try</span></a><span class="pun">(</span><span class="typ">SDL_Init</span><span class="pun">(</span><span class="pln">SDL_INIT_EVERYTHING</span><span class="pun">));
+
+    </span><span class="kwd">scope </span><span class="pun">(</span><span class="pln">exit</span><span class="pun">) { </span><span class="typ">SDL_Quit</span><span class="pun">(); }
+}</span></code></pre>
+</section>
+</section>
 			<section>
 				<h2>Functions</h2>
 				<table>
