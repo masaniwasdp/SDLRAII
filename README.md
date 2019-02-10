@@ -14,7 +14,7 @@ La biblioteko provizas strukturon, kiu administras rimedojn de SDL biblioteko.
 ## Ekzemplo
 
 ``` d
-import sdlraii;
+import sdlraii; // derelict.sdl2.sdl, sdlraii.except, sdlraii.types
 import std.string : toStringz;
 
 void main()
