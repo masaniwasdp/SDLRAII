@@ -4,6 +4,22 @@
   Authors:   masaniwa
   Copyright: 2019 masaniwa
   License:   MIT
+
+  Examples:
+    ---
+    import sdlraii; // derelict.sdl2.sdl, sdlraii.except, sdlraii.types
+    import std.string : toStringz;
+
+    void main()
+    {
+        // Komencas SDL bibliotekon. Escepto estas ĵetita se ĝi malsukcesas.
+        DerelictSDL2.load;
+
+        SDL_Try(SDL_Init(SDL_INIT_EVERYTHING));
+
+        scope (exit) { SDL_Quit(); }
+    }
+    ---
  */
 module sdlraii.except;
 
@@ -31,7 +47,7 @@ class SDL_Exception : Exception
 
   Params: exp = Esprimo, kiu revenas negativan nombron se ĝi malsukcesas.
 
-  Throws: SDL_Exception Kiam la esprimo malsukcesas.
+  Throws: `SDL_Exception` Kiam la esprimo malsukcesas.
  */
 void SDL_Try(lazy int exp)
 {
