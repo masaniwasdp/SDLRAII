@@ -12,6 +12,7 @@ import sdlraii.raii : SDL_RAII;
 version (unittest)
 {
     import dunit.toolkit;
+    import sdlraii.except : SDL_Exception;
     import sdlraii.testmock.sdl;
 }
 else
@@ -48,5 +49,10 @@ unittest
         SDL_RAIIHolder(&window).ptr.assertTruthy;
 
         SDL_DestroyWindow.callcount.assertEqual(1);
+    }
+    {
+        SDL_GetError.value = `Alice`;
+
+        SDL_RAIIHolder(cast(SDL_Window*) null).assertThrow!SDL_Exception(`Alice`);
     }
 }
