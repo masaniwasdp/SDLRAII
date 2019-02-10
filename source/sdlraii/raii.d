@@ -4,10 +4,31 @@
   Authors:   masaniwa
   Copyright: 2019 masaniwa
   License:   MIT
+
+  Examples:
+    ---
+    import sdlraii; // derelict.sdl2.sdl, sdlraii.except, sdlraii.types
+    import std.string : toStringz;
+
+    void main()
+    {
+        DerelictSDL2.load;
+
+        if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
+        {
+            scope (exit) { SDL_Quit(); }
+
+            // Kreas fenestron, kiuj estos liberigitaj de RAII.
+            // Tamen, rekomendas uzi `SDL_RAIIHolder` anstataŭ `SDL_RAII!SDL_Window`.
+            auto w = SDL_RAII!SDL_Window(SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
+        }
+    }
+    ---
  */
 module sdlraii.raii;
 
 import sdlraii.except : SDL_Exception;
+import sdlraii.release : SDL_Release;
 import std.conv : to;
 import std.exception : enforce;
 
@@ -24,15 +45,15 @@ else
 /** Administras rimedon. */
 struct SDL_RAII(T)
 {
-    static assert(!__traits(isSame, SDL_Release!T, SDL_DummyFunc), `Type T is not supported.`);
-
     /**
       Konstruas la strukturon.
+
+      Rekomendas uzi `SDL_RAIIHolder` anstataŭ ĉi.
 
       Params: exp = Esprimo por akiri rimedon de la SDL biblioteko.
                     Ĉi tiu rimedo estos administrata.
 
-      Throws: SDL_Exception Kiam malsukcesas akiri rimedon.
+      Throws: `SDL_Exception` Kiam malsukcesas akiri rimedon.
      */
     this(lazy T* exp)
     {
@@ -63,34 +84,6 @@ struct SDL_RAII(T)
     {
         assert(res);
     }
-}
-
-/* Aliaso de funkcio por liberigi rimedojn. */
-private alias SDL_Release(T) = SDL_DummyFunc;
-
-private alias SDL_Release(T : SDL_Window) = SDL_DestroyWindow;
-
-private alias SDL_Release(T : SDL_Renderer) = SDL_DestroyRenderer;
-
-private alias SDL_Release(T : SDL_Texture) = SDL_DestroyTexture;
-
-private alias SDL_Release(T : SDL_Surface) = SDL_FreeSurface;
-
-private alias SDL_Release(T : SDL_PixelFormat) = SDL_FreeFormat;
-
-private alias SDL_Release(T : SDL_Palette) = SDL_FreePalette;
-
-private alias SDL_Release(T : SDL_Cursor) = SDL_FreeCursor;
-
-private alias SDL_Release(T : SDL_Joystick) = SDL_JoystickClose;
-
-private alias SDL_Release(T : SDL_GameController) = SDL_GameControllerClose;
-
-private alias SDL_Release(T : SDL_Haptic) = SDL_HapticClose;
-
-/* Dummy-funkcio, kiu ne povas esti vokata. */
-private void SDL_DummyFunc() @nogc nothrow pure @safe
-{
 }
 
 unittest
