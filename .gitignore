@@ -13,3 +13,4 @@ sdlraii-test-*
 *.lst
 build
 dub.selections.json
+dscanner.ini
