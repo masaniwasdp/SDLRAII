@@ -27,8 +27,8 @@ void main()
     scope (exit) { SDL_Quit(); }
 
     // Kreas fenestron kaj rendiston, kiuj estos liberigitaj de RAII.
-    auto w = SDL_RAII_Holder(SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
-    auto r = SDL_RAII_Holder(SDL_CreateRenderer(w.ptr, -1, SDL_RENDERER_ACCELERATED));
+    auto w = SDL_RAIIHolder(SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
+    auto r = SDL_RAIIHolder(SDL_CreateRenderer(w.ptr, -1, SDL_RENDERER_ACCELERATED));
 
     // Plenigas la ekranon. Escepto estos ĵetita se ĝi malsukcesas.
     SDL_Try(SDL_SetRenderDrawColor(r.ptr, 0xC0, 0xBE, 0xBE, 0xEF));
