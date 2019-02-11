@@ -63,7 +63,7 @@ $('#symbolSearchPane').show();</script>
         </span><span class="kwd">scope </span><span class="pun">(</span><span class="pln">exit</span><span class="pun">) { </span><span class="typ">SDL_Quit</span><span class="pun">(); }
 
         </span><span class="com">// Kreas fenestron, kiuj estos liberigitaj de RAII.
-        </span><span class="kwd">auto </span><span class="pln">w </span><span class="pun">= </span><span class="typ">SDL_RAII_Holder</span><span class="pun">(</span><span class="typ">SDL_CreateWindow</span><span class="pun">(</span><span class="pln">toStringz</span><span class="pun">(</span><span class="str">`Alice`</span><span class="pun">), </span><span class="lit">0</span><span class="pun">, </span><span class="lit">0</span><span class="pun">, </span><span class="lit">77</span><span class="pun">, </span><span class="lit">16</span><span class="pun">, </span><span class="pln">SDL_WINDOW_SHOWN</span><span class="pun">));
+        </span><span class="kwd">auto </span><span class="pln">w </span><span class="pun">= </span><span class="typ">SDL_RAIIHolder</span><span class="pun">(</span><span class="typ">SDL_CreateWindow</span><span class="pun">(</span><span class="pln">toStringz</span><span class="pun">(</span><span class="str">`Alice`</span><span class="pun">), </span><span class="lit">0</span><span class="pun">, </span><span class="lit">0</span><span class="pun">, </span><span class="lit">77</span><span class="pun">, </span><span class="lit">16</span><span class="pun">, </span><span class="pln">SDL_WINDOW_SHOWN</span><span class="pun">));
     }
 }</span></code></pre>
 </section>

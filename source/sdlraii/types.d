@@ -21,7 +21,7 @@
             scope (exit) { SDL_Quit(); }
 
             // Kreas fenestron, kiuj estos liberigitaj de RAII.
-            auto w = SDL_RAII_Holder(SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
+            auto w = SDL_RAIIHolder(SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
         }
     }
     ---
