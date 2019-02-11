@@ -27,7 +27,12 @@ package mixin SDL_Gen_Release!(SDL_Joystick, SDL_JoystickClose);
 package mixin SDL_Gen_Release!(SDL_GameController, SDL_GameControllerClose);
 package mixin SDL_Gen_Release!(SDL_Haptic, SDL_HapticClose);
 
-/* Generas aliason de funkcio por liberigi rimedojn. */
+/*
+  Generas aliason de funkcio por liberigi rimedojn.
+
+  Params: U = Tipo de la rimedoj.
+          f = Funkcio por liberigi la rimedojn.
+ */
 private mixin template SDL_Gen_Release(U, alias f)
 {
     /* Aliaso de funkcio por liberigi rimedojn. */

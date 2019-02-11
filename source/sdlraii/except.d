@@ -49,7 +49,7 @@ class SDL_Exception : Exception
 
   Throws: `SDL_Exception` Kiam la esprimo malsukcesas.
  */
-void SDL_Try(lazy int exp)
+void SDL_Try(lazy int exp) @trusted
 {
     if (exp < 0)
     {
@@ -57,7 +57,7 @@ void SDL_Try(lazy int exp)
     }
 }
 
-unittest
+@safe unittest
 {
     SDL_GetError.value = `Alice`;
 

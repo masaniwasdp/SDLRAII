@@ -52,7 +52,11 @@ mixin SDL_Gen_RAIIHolder!SDL_Joystick;
 mixin SDL_Gen_RAIIHolder!SDL_GameController;
 mixin SDL_Gen_RAIIHolder!SDL_Haptic;
 
-/* Generas funkcion por krei la administrantojn. */
+/*
+  Generas funkcion por krei la administrantojn.
+
+  Params: T = Tipo de la rimedoj, kiuj estos administritaj.
+ */
 private mixin template SDL_Gen_RAIIHolder(T)
 {
     /*
@@ -65,13 +69,13 @@ private mixin template SDL_Gen_RAIIHolder(T)
 
       Throws: `SDL_Exception` Kiam malsukcesas akiri rimedon.
      */
-    SDL_RAII!T SDL_RAIIHolder(lazy T* exp)
+    SDL_RAII!T SDL_RAIIHolder(lazy T* exp) @trusted
     {
         return typeof(return)(exp);
     }
 }
 
-unittest
+@system unittest
 {
     {
         SDL_DestroyWindow.callcount = 0;

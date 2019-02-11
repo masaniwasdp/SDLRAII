@@ -42,7 +42,11 @@ else
     import derelict.sdl2.sdl;
 }
 
-/** Administras rimedon. */
+/**
+  Administras rimedon.
+
+  Params: T = Tipo de la rimedo.
+ */
 struct SDL_RAII(T)
 {
     /**
@@ -55,7 +59,7 @@ struct SDL_RAII(T)
 
       Throws: `SDL_Exception` Kiam malsukcesas akiri rimedon.
      */
-    this(lazy T* exp)
+    this(lazy T* exp) @trusted
     {
         res = exp.enforce(new SDL_Exception(SDL_GetError().to!string));
     }
@@ -67,7 +71,11 @@ struct SDL_RAII(T)
         SDL_Release!T(res);
     }
 
-    /** Puntero de la rimedo. */
+    /**
+      Akiras punteron de la rimedo.
+
+      Returns: La puntero de la rimedo.
+     */
     T* ptr() @nogc nothrow pure @safe
     out (val)
     {
@@ -82,11 +90,11 @@ struct SDL_RAII(T)
 
     invariant
     {
-        assert(res);
+        assert(res, `The resource should not be null.`);
     }
 }
 
-unittest
+@system unittest
 {
     {
         SDL_DestroyWindow.callcount = 0;
