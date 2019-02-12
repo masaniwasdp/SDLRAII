@@ -39,8 +39,9 @@ version (unittest)
 }
 else
 {
-    import derelict.sdl2.sdl;
     import derelict.sdl2.mixer;
+    import derelict.sdl2.sdl;
+    import derelict.sdl2.ttf;
 }
 
 mixin SDL_Gen_RAIIHolder!SDL_Window;
@@ -55,6 +56,7 @@ mixin SDL_Gen_RAIIHolder!SDL_GameController;
 mixin SDL_Gen_RAIIHolder!SDL_Haptic;
 mixin SDL_Gen_RAIIHolder!Mix_Chunk;
 mixin SDL_Gen_RAIIHolder!Mix_Music;
+mixin SDL_Gen_RAIIHolder!TTF_Font;
 
 /*
   Generas funkcion por krei la administrantojn.

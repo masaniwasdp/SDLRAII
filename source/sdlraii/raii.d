@@ -206,6 +206,15 @@ struct SDL_RAII(T)
         Mix_FreeMusic.callcount.assertEqual(1);
     }
     {
+        TTF_CloseFont.callcount = 0;
+
+        TTF_Font font;
+
+        SDL_RAII!TTF_Font(&font).ptr.assertTruthy;
+
+        TTF_CloseFont.callcount.assertEqual(1);
+    }
+    {
         SDL_GetError.value = `Alice`;
 
         SDL_RAII!SDL_Window(null).assertThrow!SDL_Exception(`Alice`);
