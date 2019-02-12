@@ -14,6 +14,7 @@ version (unittest)
 else
 {
     import derelict.sdl2.sdl;
+    import derelict.sdl2.mixer;
 }
 
 package mixin SDL_Gen_Release!(SDL_Window, SDL_DestroyWindow);
@@ -26,6 +27,8 @@ package mixin SDL_Gen_Release!(SDL_Cursor, SDL_FreeCursor);
 package mixin SDL_Gen_Release!(SDL_Joystick, SDL_JoystickClose);
 package mixin SDL_Gen_Release!(SDL_GameController, SDL_GameControllerClose);
 package mixin SDL_Gen_Release!(SDL_Haptic, SDL_HapticClose);
+package mixin SDL_Gen_Release!(Mix_Chunk, Mix_FreeChunk);
+package mixin SDL_Gen_Release!(Mix_Music, Mix_FreeMusic);
 
 /*
   Generas aliason de funkcio por liberigi rimedojn.

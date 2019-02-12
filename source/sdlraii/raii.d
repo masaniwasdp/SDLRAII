@@ -188,6 +188,24 @@ struct SDL_RAII(T)
         SDL_HapticClose.callcount.assertEqual(1);
     }
     {
+        Mix_FreeChunk.callcount = 0;
+
+        Mix_Chunk chunk;
+
+        SDL_RAII!Mix_Chunk(&chunk).ptr.assertTruthy;
+
+        Mix_FreeChunk.callcount.assertEqual(1);
+    }
+    {
+        Mix_FreeMusic.callcount = 0;
+
+        Mix_Music music;
+
+        SDL_RAII!Mix_Music(&music).ptr.assertTruthy;
+
+        Mix_FreeMusic.callcount.assertEqual(1);
+    }
+    {
         SDL_GetError.value = `Alice`;
 
         SDL_RAII!SDL_Window(null).assertThrow!SDL_Exception(`Alice`);

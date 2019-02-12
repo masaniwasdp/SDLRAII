@@ -9,7 +9,8 @@
 
   Examples:
     ---
-    import sdlraii; // derelict.sdl2.sdl, sdlraii.except, sdlraii.types
+    import derelict.sdl2.sdl;
+    import sdlraii.types : SDL_RAIIHolder;
     import std.string : toStringz;
 
     void main()
@@ -39,6 +40,7 @@ version (unittest)
 else
 {
     import derelict.sdl2.sdl;
+    import derelict.sdl2.mixer;
 }
 
 mixin SDL_Gen_RAIIHolder!SDL_Window;
@@ -51,6 +53,8 @@ mixin SDL_Gen_RAIIHolder!SDL_Cursor;
 mixin SDL_Gen_RAIIHolder!SDL_Joystick;
 mixin SDL_Gen_RAIIHolder!SDL_GameController;
 mixin SDL_Gen_RAIIHolder!SDL_Haptic;
+mixin SDL_Gen_RAIIHolder!Mix_Chunk;
+mixin SDL_Gen_RAIIHolder!Mix_Music;
 
 /*
   Generas funkcion por krei la administrantojn.
