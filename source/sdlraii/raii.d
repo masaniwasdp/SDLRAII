@@ -7,7 +7,8 @@
 
   Examples:
     ---
-    import sdlraii; // derelict.sdl2.sdl, sdlraii.except, sdlraii.types
+    import derelict.sdl2.sdl;
+    import sdlraii.raii : SDL_RAII;
     import std.string : toStringz;
 
     void main()
