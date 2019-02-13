@@ -16,12 +16,8 @@ struct Mix_Chunk          {}
 struct Mix_Music          {}
 struct TTF_Font           {}
 struct UDPpacket          {}
-struct _TCPsocket         {}
-struct _UDPsocket         {}
 struct _SDLNet_SocketSet  {}
 
-alias TCPsocket        = _TCPsocket*;
-alias UDPsocket        = _UDPsocket*;
 alias SDLNet_SocketSet = _SDLNet_SocketSet*;
 
 FunctionMock!(const(char)*)              SDL_GetError;
@@ -40,6 +36,4 @@ FunctionMock!(void, Mix_Music*)          Mix_FreeMusic;
 FunctionMock!(void, TTF_Font*)           TTF_CloseFont;
 FunctionMock!(void, UDPpacket*)          SDLNet_FreePacket;
 FunctionMock!(void, UDPpacket**)         SDLNet_FreePacketV;
-FunctionMock!(void, TCPsocket)           SDLNet_TCP_Close;
-FunctionMock!(void, UDPsocket)           SDLNet_UDP_Close;
 FunctionMock!(void, SDLNet_SocketSet)    SDLNet_FreeSocketSet;

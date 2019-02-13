@@ -1,7 +1,7 @@
 /**
   Provizas aliasojn de la administrantoj.
 
-  `SDL_RAIIHolder(lazy T* exp)` estas aliason de `SDL_RAII!T(lazy T* exp)`.
+  `SDL_RAIIHolder(lazy T exp)` estas aliason de `SDL_RAII!T(lazy T exp)`.
 
   Authors:   masaniwa
   Copyright: 2019 masaniwa
@@ -45,29 +45,27 @@ else
     import derelict.sdl2.ttf;
 }
 
-mixin SDL_Gen_RAIIHolder!(SDL_Window);
-mixin SDL_Gen_RAIIHolder!(SDL_Renderer);
-mixin SDL_Gen_RAIIHolder!(SDL_Texture);
-mixin SDL_Gen_RAIIHolder!(SDL_Surface);
-mixin SDL_Gen_RAIIHolder!(SDL_PixelFormat);
-mixin SDL_Gen_RAIIHolder!(SDL_Palette);
-mixin SDL_Gen_RAIIHolder!(SDL_Cursor);
-mixin SDL_Gen_RAIIHolder!(SDL_Joystick);
-mixin SDL_Gen_RAIIHolder!(SDL_GameController);
-mixin SDL_Gen_RAIIHolder!(SDL_Haptic);
-mixin SDL_Gen_RAIIHolder!(Mix_Chunk);
-mixin SDL_Gen_RAIIHolder!(Mix_Music);
-mixin SDL_Gen_RAIIHolder!(TTF_Font);
-mixin SDL_Gen_RAIIHolder!(UDPpacket);
+mixin SDL_Gen_RAIIHolder!(SDL_Window*);
+mixin SDL_Gen_RAIIHolder!(SDL_Renderer*);
+mixin SDL_Gen_RAIIHolder!(SDL_Texture*);
+mixin SDL_Gen_RAIIHolder!(SDL_Surface*);
+mixin SDL_Gen_RAIIHolder!(SDL_PixelFormat*);
+mixin SDL_Gen_RAIIHolder!(SDL_Palette*);
+mixin SDL_Gen_RAIIHolder!(SDL_Cursor*);
+mixin SDL_Gen_RAIIHolder!(SDL_Joystick*);
+mixin SDL_Gen_RAIIHolder!(SDL_GameController*);
+mixin SDL_Gen_RAIIHolder!(SDL_Haptic*);
+mixin SDL_Gen_RAIIHolder!(Mix_Chunk*);
+mixin SDL_Gen_RAIIHolder!(Mix_Music*);
+mixin SDL_Gen_RAIIHolder!(TTF_Font*);
 mixin SDL_Gen_RAIIHolder!(UDPpacket*);
-mixin SDL_Gen_RAIIHolder!(_TCPsocket);
-mixin SDL_Gen_RAIIHolder!(_UDPsocket);
-mixin SDL_Gen_RAIIHolder!(_SDLNet_SocketSet);
+mixin SDL_Gen_RAIIHolder!(UDPpacket**);
+mixin SDL_Gen_RAIIHolder!(SDLNet_SocketSet);
 
 /*
   Generas funkcion por krei la administrantojn.
 
-  Params: T = Tipo de la rimedoj, kiuj estos administritaj.
+  Params: T = Tipo de puntero de la rimedoj, kiuj estos administritaj.
  */
 private mixin template SDL_Gen_RAIIHolder(T)
 {
@@ -81,7 +79,7 @@ private mixin template SDL_Gen_RAIIHolder(T)
 
       Throws: `SDL_Exception` Kiam malsukcesas akiri rimedon.
      */
-    SDL_RAII!T SDL_RAIIHolder(lazy T* exp) @trusted
+    SDL_RAII!T SDL_RAIIHolder(lazy T exp) @trusted
     {
         return typeof(return)(exp);
     }
