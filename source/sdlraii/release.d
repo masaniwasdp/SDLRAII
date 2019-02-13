@@ -14,6 +14,7 @@ version (unittest)
 else
 {
     import derelict.sdl2.mixer;
+    import derelict.sdl2.net;
     import derelict.sdl2.sdl;
     import derelict.sdl2.ttf;
 }
@@ -31,6 +32,11 @@ package mixin SDL_Gen_Release!(SDL_Haptic, SDL_HapticClose);
 package mixin SDL_Gen_Release!(Mix_Chunk, Mix_FreeChunk);
 package mixin SDL_Gen_Release!(Mix_Music, Mix_FreeMusic);
 package mixin SDL_Gen_Release!(TTF_Font, TTF_CloseFont);
+package mixin SDL_Gen_Release!(UDPpacket, SDLNet_FreePacket);
+package mixin SDL_Gen_Release!(UDPpacket*, SDLNet_FreePacketV);
+package mixin SDL_Gen_Release!(_TCPsocket, SDLNet_TCP_Close);
+package mixin SDL_Gen_Release!(_UDPsocket, SDLNet_UDP_Close);
+package mixin SDL_Gen_Release!(_SDLNet_SocketSet, SDLNet_FreeSocketSet);
 
 /*
   Generas aliason de funkcio por liberigi rimedojn.

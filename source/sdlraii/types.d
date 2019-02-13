@@ -40,6 +40,7 @@ version (unittest)
 else
 {
     import derelict.sdl2.mixer;
+    import derelict.sdl2.net;
     import derelict.sdl2.sdl;
     import derelict.sdl2.ttf;
 }
@@ -57,6 +58,11 @@ mixin SDL_Gen_RAIIHolder!SDL_Haptic;
 mixin SDL_Gen_RAIIHolder!Mix_Chunk;
 mixin SDL_Gen_RAIIHolder!Mix_Music;
 mixin SDL_Gen_RAIIHolder!TTF_Font;
+mixin SDL_Gen_RAIIHolder!(UDPpacket);
+mixin SDL_Gen_RAIIHolder!(UDPpacket*);
+mixin SDL_Gen_RAIIHolder!(_TCPsocket);
+mixin SDL_Gen_RAIIHolder!(_UDPsocket);
+mixin SDL_Gen_RAIIHolder!(_SDLNet_SocketSet);
 
 /*
   Generas funkcion por krei la administrantojn.

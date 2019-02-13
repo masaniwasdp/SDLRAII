@@ -215,6 +215,51 @@ struct SDL_RAII(T)
         TTF_CloseFont.callcount.assertEqual(1);
     }
     {
+        SDLNet_FreePacket.callcount = 0;
+
+        UDPpacket packet;
+
+        SDL_RAII!(UDPpacket)(&packet).ptr.assertTruthy;
+
+        SDLNet_FreePacket.callcount.assertEqual(1);
+    }
+    {
+        SDLNet_FreePacketV.callcount = 0;
+
+        UDPpacket* packetV;
+
+        SDL_RAII!(UDPpacket*)(&packetV).ptr.assertTruthy;
+
+        SDLNet_FreePacketV.callcount.assertEqual(1);
+    }
+    {
+        SDLNet_TCP_Close.callcount = 0;
+
+        _TCPsocket socket;
+
+        SDL_RAII!(_TCPsocket)(&socket).ptr.assertTruthy;
+
+        SDLNet_TCP_Close.callcount.assertEqual(1);
+    }
+    {
+        SDLNet_UDP_Close.callcount = 0;
+
+        _UDPsocket socket;
+
+        SDL_RAII!(_UDPsocket)(&socket).ptr.assertTruthy;
+
+        SDLNet_UDP_Close.callcount.assertEqual(1);
+    }
+    {
+        SDLNet_FreeSocketSet.callcount = 0;
+
+        _SDLNet_SocketSet set;
+
+        SDL_RAII!(_SDLNet_SocketSet)(&set).ptr.assertTruthy;
+
+        SDLNet_FreeSocketSet.callcount.assertEqual(1);
+    }
+    {
         SDL_GetError.value = `Alice`;
 
         SDL_RAII!SDL_Window(null).assertThrow!SDL_Exception(`Alice`);
