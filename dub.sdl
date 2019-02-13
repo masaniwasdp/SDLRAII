@@ -1,16 +1,20 @@
-name "sdlraii"
+name        "sdlraii"
 description "A simple RAII wrapper for SDL library."
-authors "masaniwa"
-copyright "Copyright © 2019, masaniwa"
-license "MIT"
+authors     "masaniwa"
+copyright   "Copyright © 2019, masaniwa"
+license     "MIT"
+
 dependency "derelict-sdl2" version="~>3.1.0-alpha.4"
-dependency "dunit" version="~>1.0.14"
+dependency "dunit"         version="~>1.0.14"
+
 targetPath "$PACKAGE_DIR/build/"
+
 configuration "default" {
     targetType "library"
 }
+
 configuration "ddox-windows" {
-    platforms "windows"
+    platforms    "windows"
     buildOptions "syntaxOnly"
-    dflags "-Df__dummy.html" "-Xfdocs.json"
+    dflags       "-Df__dummy.html" "-Xfdocs.json"
 }
