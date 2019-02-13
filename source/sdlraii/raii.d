@@ -20,8 +20,8 @@
             scope (exit) { SDL_Quit(); }
 
             // Kreas fenestron, kiuj estos liberigitaj de RAII.
-            // Tamen, rekomendas uzi `SDL_RAIIHolder` anstataŭ `SDL_RAII!SDL_Window`.
-            auto w = SDL_RAII!SDL_Window(SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
+            // Tamen, rekomendas uzi `SDL_RAIIHolder` anstataŭ `SDL_RAII!(SDL_Window)`.
+            auto w = SDL_RAII!(SDL_Window)(SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
         }
     }
     ---
@@ -102,7 +102,7 @@ struct SDL_RAII(T)
 
         SDL_Window window;
 
-        SDL_RAII!SDL_Window(&window).ptr.assertTruthy;
+        SDL_RAII!(SDL_Window)(&window).ptr.assertTruthy;
 
         SDL_DestroyWindow.callcount.assertEqual(1);
     }
@@ -111,7 +111,7 @@ struct SDL_RAII(T)
 
         SDL_Renderer renderer;
 
-        SDL_RAII!SDL_Renderer(&renderer).ptr.assertTruthy;
+        SDL_RAII!(SDL_Renderer)(&renderer).ptr.assertTruthy;
 
         SDL_DestroyRenderer.callcount.assertEqual(1);
     }
@@ -120,7 +120,7 @@ struct SDL_RAII(T)
 
         SDL_Texture texture;
 
-        SDL_RAII!SDL_Texture(&texture).ptr.assertTruthy;
+        SDL_RAII!(SDL_Texture)(&texture).ptr.assertTruthy;
 
         SDL_DestroyTexture.callcount.assertEqual(1);
     }
@@ -129,7 +129,7 @@ struct SDL_RAII(T)
 
         SDL_Surface surface;
 
-        SDL_RAII!SDL_Surface(&surface).ptr.assertTruthy;
+        SDL_RAII!(SDL_Surface)(&surface).ptr.assertTruthy;
 
         SDL_FreeSurface.callcount.assertEqual(1);
     }
@@ -138,7 +138,7 @@ struct SDL_RAII(T)
 
         SDL_PixelFormat format;
 
-        SDL_RAII!SDL_PixelFormat(&format).ptr.assertTruthy;
+        SDL_RAII!(SDL_PixelFormat)(&format).ptr.assertTruthy;
 
         SDL_FreeFormat.callcount.assertEqual(1);
     }
@@ -147,7 +147,7 @@ struct SDL_RAII(T)
 
         SDL_Palette palette;
 
-        SDL_RAII!SDL_Palette(&palette).ptr.assertTruthy;
+        SDL_RAII!(SDL_Palette)(&palette).ptr.assertTruthy;
 
         SDL_FreePalette.callcount.assertEqual(1);
     }
@@ -156,7 +156,7 @@ struct SDL_RAII(T)
 
         SDL_Cursor cursor;
 
-        SDL_RAII!SDL_Cursor(&cursor).ptr.assertTruthy;
+        SDL_RAII!(SDL_Cursor)(&cursor).ptr.assertTruthy;
 
         SDL_FreeCursor.callcount.assertEqual(1);
     }
@@ -165,7 +165,7 @@ struct SDL_RAII(T)
 
         SDL_Joystick joystick;
 
-        SDL_RAII!SDL_Joystick(&joystick).ptr.assertTruthy;
+        SDL_RAII!(SDL_Joystick)(&joystick).ptr.assertTruthy;
 
         SDL_JoystickClose.callcount.assertEqual(1);
     }
@@ -174,7 +174,7 @@ struct SDL_RAII(T)
 
         SDL_GameController controller;
 
-        SDL_RAII!SDL_GameController(&controller).ptr.assertTruthy;
+        SDL_RAII!(SDL_GameController)(&controller).ptr.assertTruthy;
 
         SDL_GameControllerClose.callcount.assertEqual(1);
     }
@@ -183,7 +183,7 @@ struct SDL_RAII(T)
 
         SDL_Haptic haptic;
 
-        SDL_RAII!SDL_Haptic(&haptic).ptr.assertTruthy;
+        SDL_RAII!(SDL_Haptic)(&haptic).ptr.assertTruthy;
 
         SDL_HapticClose.callcount.assertEqual(1);
     }
@@ -192,7 +192,7 @@ struct SDL_RAII(T)
 
         Mix_Chunk chunk;
 
-        SDL_RAII!Mix_Chunk(&chunk).ptr.assertTruthy;
+        SDL_RAII!(Mix_Chunk)(&chunk).ptr.assertTruthy;
 
         Mix_FreeChunk.callcount.assertEqual(1);
     }
@@ -201,7 +201,7 @@ struct SDL_RAII(T)
 
         Mix_Music music;
 
-        SDL_RAII!Mix_Music(&music).ptr.assertTruthy;
+        SDL_RAII!(Mix_Music)(&music).ptr.assertTruthy;
 
         Mix_FreeMusic.callcount.assertEqual(1);
     }
@@ -210,7 +210,7 @@ struct SDL_RAII(T)
 
         TTF_Font font;
 
-        SDL_RAII!TTF_Font(&font).ptr.assertTruthy;
+        SDL_RAII!(TTF_Font)(&font).ptr.assertTruthy;
 
         TTF_CloseFont.callcount.assertEqual(1);
     }

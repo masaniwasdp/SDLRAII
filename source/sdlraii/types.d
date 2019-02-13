@@ -45,19 +45,19 @@ else
     import derelict.sdl2.ttf;
 }
 
-mixin SDL_Gen_RAIIHolder!SDL_Window;
-mixin SDL_Gen_RAIIHolder!SDL_Renderer;
-mixin SDL_Gen_RAIIHolder!SDL_Texture;
-mixin SDL_Gen_RAIIHolder!SDL_Surface;
-mixin SDL_Gen_RAIIHolder!SDL_PixelFormat;
-mixin SDL_Gen_RAIIHolder!SDL_Palette;
-mixin SDL_Gen_RAIIHolder!SDL_Cursor;
-mixin SDL_Gen_RAIIHolder!SDL_Joystick;
-mixin SDL_Gen_RAIIHolder!SDL_GameController;
-mixin SDL_Gen_RAIIHolder!SDL_Haptic;
-mixin SDL_Gen_RAIIHolder!Mix_Chunk;
-mixin SDL_Gen_RAIIHolder!Mix_Music;
-mixin SDL_Gen_RAIIHolder!TTF_Font;
+mixin SDL_Gen_RAIIHolder!(SDL_Window);
+mixin SDL_Gen_RAIIHolder!(SDL_Renderer);
+mixin SDL_Gen_RAIIHolder!(SDL_Texture);
+mixin SDL_Gen_RAIIHolder!(SDL_Surface);
+mixin SDL_Gen_RAIIHolder!(SDL_PixelFormat);
+mixin SDL_Gen_RAIIHolder!(SDL_Palette);
+mixin SDL_Gen_RAIIHolder!(SDL_Cursor);
+mixin SDL_Gen_RAIIHolder!(SDL_Joystick);
+mixin SDL_Gen_RAIIHolder!(SDL_GameController);
+mixin SDL_Gen_RAIIHolder!(SDL_Haptic);
+mixin SDL_Gen_RAIIHolder!(Mix_Chunk);
+mixin SDL_Gen_RAIIHolder!(Mix_Music);
+mixin SDL_Gen_RAIIHolder!(TTF_Font);
 mixin SDL_Gen_RAIIHolder!(UDPpacket);
 mixin SDL_Gen_RAIIHolder!(UDPpacket*);
 mixin SDL_Gen_RAIIHolder!(_TCPsocket);
