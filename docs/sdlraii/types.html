@@ -46,12 +46,13 @@ $('#symbolSearchPane').show();</script>
 		</nav>
 		<div id="main-contents">
 			<h1>Module sdlraii.types</h1><p>Provizas aliasojn de la administrantoj.
-</p><section><p><code class="lang-d"><span class="typ">SDL_RAIIHolder</span><span class="pun">(</span><span class="kwd">lazy </span><span class="pln">T</span><span class="pun">* </span><span class="pln">exp</span><span class="pun">)</span></code> estas aliason de <code class="lang-d"><span class="pln">SDL_RAII</span><span class="pun">!</span><span class="pln">T</span><span class="pun">(</span><span class="kwd">lazy </span><span class="pln">T</span><span class="pun">* </span><span class="pln">exp</span><span class="pun">)</span></code>.
+</p><section><p><code class="lang-d"><span class="typ">SDL_RAIIHolder</span><span class="pun">(</span><span class="kwd">lazy </span><span class="pln">T exp</span><span class="pun">)</span></code> estas aliason de <code class="lang-d"><span class="pln">SDL_RAII</span><span class="pun">!</span><span class="pln">T</span><span class="pun">(</span><span class="kwd">lazy </span><span class="pln">T exp</span><span class="pun">)</span></code>.
 </p>
 </section>
 
 			<section><section><h2>Examples</h2>
-<pre class="code"><code class="lang-d"><span class="kwd">import <a href="../sdlraii.html"></span><span class="pln">sdlraii</span></a><span class="pun">; </span><span class="com">// derelict.sdl2.sdl, sdlraii.except, sdlraii.types
+<pre class="code"><code class="lang-d"><span class="kwd">import </span><span class="pln">derelict<wbr/></span><span class="pun">.</span><span class="pln">sdl2<wbr/></span><span class="pun">.</span><span class="pln">sdl</span><span class="pun">;
+</span><span class="kwd">import </span><span class="pln">sdlraii<wbr/></span><span class="pun">.</span><span class="pln">types </span><span class="pun">: </span><span class="typ">SDL_RAIIHolder</span><span class="pun">;
 </span><span class="kwd">import </span><span class="pln">std<wbr/></span><span class="pun">.</span><span class="typ">string </span><span class="pun">: </span><span class="pln">toStringz</span><span class="pun">;
 
 </span><span class="typ">void </span><span class="pln">main</span><span class="pun">()
