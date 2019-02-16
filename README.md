@@ -10,11 +10,13 @@ Administras rimedojn de SDL biblioteko.
 La biblioteko provizas strukturon, kiu administras rimedojn de SDL biblioteko.
 Ĉi strukturo aŭtomate liberigas la rimedojn kun RAII.
 Ĝi ankaŭ provizas funkcion por uzado de eraroj.
+Ĉi tiuj ankaŭ subtenas SDL_image, SDL_mixer, SDL_net kaj SDL_ttf.
 
 ## Ekzemplo
 
 ``` d
-import sdlraii; // derelict.sdl2.sdl, sdlraii.except, sdlraii.types
+import derelict.sdl2.sdl;
+import sdlraii; // sdlraii.except, sdlraii.raii, sdlraii.types
 import std.string : toStringz;
 
 void main()
