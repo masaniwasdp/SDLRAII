@@ -1,5 +1,4 @@
-SDLRAII
-===
+# SDLRAII
 
 [![Build Status](https://travis-ci.org/masaniwasdp/SDLRAII.svg?branch=master)](https://travis-ci.org/masaniwasdp/SDLRAII)
 [![codecov](https://codecov.io/gh/masaniwasdp/SDLRAII/branch/master/graph/badge.svg)](https://codecov.io/gh/masaniwasdp/SDLRAII)
@@ -7,6 +6,7 @@ SDLRAII
 Administras rimedojn de SDL biblioteko.
 
 ## Priskribo
+
 La biblioteko provizas strukturon, kiu administras rimedojn de SDL biblioteko.
 Ĉi strukturo aŭtomate liberigas la rimedojn kun RAII.
 Ĝi ankaŭ provizas funkcion por uzado de eraroj.
@@ -44,9 +44,11 @@ void main()
 ```
 
 ## Uzado
+
 Vidu [API dokumentadon](https://masaniwasdp.github.com/SDLRAII/sdlraii).
 
 ## Permesilo
+
 © 2019, masaniwa
 
 La programaro estas licencita sub la [MIT](https://github.com/masaniwasdp/SDLRAII/blob/master/LICENCE).
