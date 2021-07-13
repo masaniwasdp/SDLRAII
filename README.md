@@ -1,6 +1,6 @@
 # SDLRAII
 
-[![Build Status](https://travis-ci.org/masaniwasdp/SDLRAII.svg?branch=master)](https://travis-ci.org/masaniwasdp/SDLRAII)
+[![Build Status](https://travis-ci.com/masaniwasdp/SDLRAII.svg?branch=master)](https://travis-ci.com/github/masaniwasdp/SDLRAII)
 [![codecov](https://codecov.io/gh/masaniwasdp/SDLRAII/branch/master/graph/badge.svg)](https://codecov.io/gh/masaniwasdp/SDLRAII)
 
 Administras rimedojn de SDL biblioteko.
