@@ -35,6 +35,10 @@ version (unittest)
 {
     import dunit.toolkit;
     import sdlraii.except : SDL_Exception;
+}
+
+version (mocksdl)
+{
     import sdlraii.testmock.sdl;
 }
 else

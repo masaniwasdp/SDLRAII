@@ -2,7 +2,7 @@ language: d
 
 script:
   - dub build
-  - dub test -b unittest-cov
+  - dub test --config=mocksdl -b unittest-cov
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

@@ -7,7 +7,7 @@
  */
 module sdlraii.release;
 
-version (unittest)
+version (mocksdl)
 {
     import sdlraii.testmock.sdl;
 }

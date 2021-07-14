@@ -36,6 +36,10 @@ import std.exception : enforce;
 version (unittest)
 {
     import dunit.toolkit;
+}
+
+version (mocksdl)
+{
     import sdlraii.testmock.sdl;
 }
 else
