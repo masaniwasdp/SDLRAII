@@ -35,11 +35,6 @@ $('#symbolSearchPane').show();</script>
 						<a href="./sdlraii/raii.html">raii</a>
 					</div>
 				</li>
-				<li>
-					<div class="module ">
-						<a href="./sdlraii/types.html">types</a>
-					</div>
-				</li>
 			</ul>
 				</li>
 			</ul>
@@ -50,7 +45,7 @@ $('#symbolSearchPane').show();</script>
 
 			<section><section><h2>Examples</h2>
 <pre class="code"><code class="lang-d"><span class="kwd">import </span><span class="pln">derelict<wbr/></span><span class="pun">.</span><span class="pln">sdl2<wbr/></span><span class="pun">.</span><span class="pln">sdl</span><span class="pun">;
-</span><span class="kwd">import </span><span class="pln">sdlraii</span><span class="pun">; </span><span class="com">// sdlraii.except, sdlraii.raii, sdlraii.types
+</span><span class="kwd">import </span><span class="pln">sdlraii</span><span class="pun">; </span><span class="com">// sdlraii.except, sdlraii.raii
 </span><span class="kwd">import </span><span class="pln">std<wbr/></span><span class="pun">.</span><span class="typ">string </span><span class="pun">: </span><span class="pln">toStringz</span><span class="pun">;
 
 </span><span class="typ">void </span><span class="pln">main</span><span class="pun">()
@@ -63,8 +58,8 @@ $('#symbolSearchPane').show();</script>
     </span><span class="kwd">scope </span><span class="pun">(</span><span class="pln">exit</span><span class="pun">) { </span><span class="typ">SDL_Quit</span><span class="pun">(); }
 
     </span><span class="com">// Kreas fenestron kaj rendiston, kiuj estos liberigitaj de RAII.
-    </span><span class="kwd">auto </span><span class="pln">w </span><span class="pun">= </span><span class="typ">SDL_RAIIHolder</span><span class="pun">(</span><span class="typ">SDL_CreateWindow</span><span class="pun">(</span><span class="pln">toStringz</span><span class="pun">(</span><span class="str">`Alice`</span><span class="pun">), </span><span class="lit">0</span><span class="pun">, </span><span class="lit">0</span><span class="pun">, </span><span class="lit">77</span><span class="pun">, </span><span class="lit">16</span><span class="pun">, </span><span class="pln">SDL_WINDOW_SHOWN</span><span class="pun">));
-    </span><span class="kwd">auto </span><span class="pln">r </span><span class="pun">= </span><span class="typ">SDL_RAIIHolder</span><span class="pun">(</span><span class="typ">SDL_CreateRenderer</span><span class="pun">(</span><span class="pln">w<wbr/></span><span class="pun">.</span><span class="pln">ptr</span><span class="pun">, -</span><span class="lit">1</span><span class="pun">, </span><span class="pln">SDL_RENDERER_ACCELERATED</span><span class="pun">));
+    </span><span class="kwd">auto </span><span class="pln">w </span><span class="pun">= </span><span class="pln">SDL_RAII</span><span class="pun">!(</span><span class="typ">SDL_Window</span><span class="pun">*)(</span><span class="typ">SDL_CreateWindow</span><span class="pun">(</span><span class="pln">toStringz</span><span class="pun">(</span><span class="str">`Alice`</span><span class="pun">), </span><span class="lit">0</span><span class="pun">, </span><span class="lit">0</span><span class="pun">, </span><span class="lit">77</span><span class="pun">, </span><span class="lit">16</span><span class="pun">, </span><span class="pln">SDL_WINDOW_SHOWN</span><span class="pun">));
+    </span><span class="kwd">auto </span><span class="pln">r </span><span class="pun">= </span><span class="pln">SDL_RAII</span><span class="pun">!(</span><span class="typ">SDL_Renderer</span><span class="pun">*)(</span><span class="typ">SDL_CreateRenderer</span><span class="pun">(</span><span class="pln">w<wbr/></span><span class="pun">.</span><span class="pln">ptr</span><span class="pun">, -</span><span class="lit">1</span><span class="pun">, </span><span class="pln">SDL_RENDERER_ACCELERATED</span><span class="pun">));
 
     </span><span class="com">// Plenigas la ekranon. Escepto estos ĵetita se ĝi malsukcesas.
     </span><span class="typ">SDL_Try</span><span class="pun">(</span><span class="typ">SDL_SetRenderDrawColor</span><span class="pun">(</span><span class="pln">r<wbr/></span><span class="pun">.</span><span class="pln">ptr</span><span class="pun">, </span><span class="lit">0xC0</span><span class="pun">, </span><span class="lit">0xBE</span><span class="pun">, </span><span class="lit">0xBE</span><span class="pun">, </span><span class="lit">0xEF</span><span class="pun">));

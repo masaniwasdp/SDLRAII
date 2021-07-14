@@ -7,6 +7,5 @@ var symbols = [
 {name: 'sdlraii.raii.SDL_RAII', kind: "structdeclaration", path: './sdlraii/raii/SDL_RAII.html', attributes: []},
 {name: 'sdlraii.raii.SDL_RAII.ptr', kind: "functiondeclaration", path: './sdlraii/raii/SDL_RAII.ptr.html', attributes: ["pure", "nothrow", "nogc", "safe"]},
 {name: 'sdlraii.raii.SDL_RAII.this', kind: "functiondeclaration", path: './sdlraii/raii/SDL_RAII.this.html', attributes: ["trusted"]},
-{name: 'sdlraii.types', kind: "module", path: './sdlraii/types.html', attributes: []},
 {name: 'sdlraii', kind: "module", path: './sdlraii.html', attributes: []},
 ];

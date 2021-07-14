@@ -16,7 +16,7 @@ La biblioteko provizas strukturon, kiu administras rimedojn de SDL biblioteko.
 
 ``` d
 import derelict.sdl2.sdl;
-import sdlraii; // sdlraii.except, sdlraii.raii, sdlraii.types
+import sdlraii; // sdlraii.except, sdlraii.raii
 import std.string : toStringz;
 
 void main()
@@ -29,8 +29,8 @@ void main()
     scope (exit) { SDL_Quit(); }
 
     // Kreas fenestron kaj rendiston, kiuj estos liberigitaj de RAII.
-    auto w = SDL_RAIIHolder(SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
-    auto r = SDL_RAIIHolder(SDL_CreateRenderer(w.ptr, -1, SDL_RENDERER_ACCELERATED));
+    auto w = SDL_RAII!(SDL_Window*)(SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
+    auto r = SDL_RAII!(SDL_Renderer*)(SDL_CreateRenderer(w.ptr, -1, SDL_RENDERER_ACCELERATED));
 
     // Plenigas la ekranon. Escepto estos ĵetita se ĝi malsukcesas.
     SDL_Try(SDL_SetRenderDrawColor(r.ptr, 0xC0, 0xBE, 0xBE, 0xEF));
