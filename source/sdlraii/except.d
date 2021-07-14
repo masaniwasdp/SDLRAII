@@ -4,23 +4,6 @@
   Authors:   masaniwa
   Copyright: 2019 masaniwa
   License:   MIT
-
-  Examples:
-    ---
-    import derelict.sdl2.sdl;
-    import sdlraii.except : SDL_Try;
-    import std.string : toStringz;
-
-    void main()
-    {
-        // Komencas SDL bibliotekon. Escepto estas ĵetita se ĝi malsukcesas.
-        DerelictSDL2.load;
-
-        SDL_Try(SDL_Init(SDL_INIT_EVERYTHING));
-
-        scope (exit) { SDL_Quit(); }
-    }
-    ---
  */
 module sdlraii.except;
 
@@ -32,7 +15,7 @@ version (unittest)
     import dunit.toolkit;
 }
 
-version (mocksdl)
+version (testmock)
 {
     import sdlraii.testmock.sdl;
 }

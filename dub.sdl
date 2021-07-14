@@ -13,8 +13,8 @@ configuration "default" {
     targetType "library"
 }
 
-configuration "mocksdl" {
-    versions "mocksdl"
+configuration "testmock" {
+    versions "testmock"
 }
 
 configuration "ddox-windows" {

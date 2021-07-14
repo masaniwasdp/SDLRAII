@@ -4,27 +4,6 @@
   Authors:   masaniwa
   Copyright: 2019 masaniwa
   License:   MIT
-
-  Examples:
-    ---
-    import derelict.sdl2.sdl;
-    import sdlraii.raii : SDL_RAII;
-    import std.string : toStringz;
-
-    void main()
-    {
-        DerelictSDL2.load;
-
-        if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
-        {
-            scope (exit) { SDL_Quit(); }
-
-            // Kreas fenestron, kiuj estos liberigitaj de RAII.
-            // Tamen, rekomendas uzi `SDL_RAIIHolder` anstataŭ `SDL_RAII!(SDL_Window*)`.
-            auto w = SDL_RAII!(SDL_Window*)(SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
-        }
-    }
-    ---
  */
 module sdlraii.raii;
 
@@ -38,7 +17,7 @@ version (unittest)
     import dunit.toolkit;
 }
 
-version (mocksdl)
+version (testmock)
 {
     import sdlraii.testmock.sdl;
 }

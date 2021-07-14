@@ -16,7 +16,8 @@ La biblioteko provizas strukturon, kiu administras rimedojn de SDL biblioteko.
 
 ``` d
 import derelict.sdl2.sdl;
-import sdlraii; // sdlraii.except, sdlraii.raii
+import sdlraii.except;
+import sdlraii.raii;
 import std.string : toStringz;
 
 void main()
@@ -45,7 +46,7 @@ void main()
 
 ## Uzado
 
-Vidu [API dokumentadon](https://masaniwasdp.github.com/SDLRAII/sdlraii).
+Vidu [API dokumentadon](https://masaniwasdp.github.io/SDLRAII/sdlraii).
 
 ## Permesilo
 
