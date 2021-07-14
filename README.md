@@ -46,7 +46,7 @@ void main()
 
 ## Uzado
 
-Vidu [API dokumentadon](https://masaniwasdp.github.io/SDLRAII/sdlraii).
+Vidu [API dokumentadon](https://masaniwasdp.github.io/SDLRAII).
 
 ## Permesilo
 
