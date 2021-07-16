@@ -36,8 +36,6 @@ struct SDL_RAII(T)
     /**
       Konstruas la strukturon.
 
-      Rekomendas uzi `SDL_RAIIHolder` anstataŭ ĉi.
-
       Params: exp = Esprimo por akiri rimedon de la SDL biblioteko.
                     Ĉi tiu rimedo estos administrata.
 
