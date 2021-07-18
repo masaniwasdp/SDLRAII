@@ -13,8 +13,8 @@ configuration "default" {
     targetType "library"
 }
 
-configuration "testmock" {
-    versions "testmock"
+configuration "sdlraii_testmock" {
+    versions "sdlraii_testmock"
 }
 
 configuration "ddox-windows" {

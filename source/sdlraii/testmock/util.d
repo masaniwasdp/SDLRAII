@@ -1,17 +1,20 @@
 module sdlraii.testmock.util;
 
-struct FunctionMock(R)
+version (sdlraii_testmock)
 {
-    R opCall() { callcount++; return value; }
+    struct FunctionMock(R)
+    {
+        R opCall() { callcount++; return value; }
 
-    R value;
+        R value;
 
-    ushort callcount;
-}
+        ushort callcount;
+    }
 
-struct FunctionMock(R : void, T1)
-{
-    R opCall(T1) { callcount++; }
+    struct FunctionMock(R : void, T1)
+    {
+        R opCall(T1) { callcount++; }
 
-    ushort callcount;
+        ushort callcount;
+    }
 }

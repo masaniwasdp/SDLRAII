@@ -7,9 +7,9 @@
  */
 module sdlraii.release;
 
-version (testmock)
+version (sdlraii_testmock)
 {
-    import sdlraii.testmock.sdl;
+    import sdlraii.testmock.sdl2;
 }
 else
 {

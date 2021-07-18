@@ -15,9 +15,9 @@ version (unittest)
     import dunit.toolkit;
 }
 
-version (testmock)
+version (sdlraii_testmock)
 {
-    import sdlraii.testmock.sdl;
+    import sdlraii.testmock.sdl2;
 }
 else
 {
