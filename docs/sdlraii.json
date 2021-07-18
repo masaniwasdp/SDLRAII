@@ -1,0 +1,431 @@
+[
+ {
+  "name" : "sdlraii.except",
+  "kind" : "module",
+  "file" : "C:\\Users\\masan\\Desktop\\Workspace\\SDLRAII\\source\\sdlraii\\except.d",
+  "comment" : "  Provizas esceptojn de la SDL biblioteko.\n\n  Authors:   masaniwa\n  Copyright: 2019 masaniwa\n  License:   MIT\n",
+  "members" : [
+   {
+    "name" : "std.conv",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "to"
+    ]
+   },
+   {
+    "name" : "std.exception",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "basicExceptionCtors"
+    ]
+   },
+   {
+    "name" : "derelict.sdl2.sdl",
+    "kind" : "import",
+    "line" : 24,
+    "char" : 12,
+    "protection" : "private"
+   },
+   {
+    "name" : "SDL_Exception",
+    "kind" : "class",
+    "protection" : "public",
+    "comment" : " Escepto de la SDL biblioteko.\n",
+    "line" : 28,
+    "char" : 1,
+    "base" : "object.Exception",
+    "members" : [
+     {
+      "name" : "basicExceptionCtors!()",
+      "kind" : "mixin",
+      "protection" : "public",
+      "line" : 30,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "SDL_Try",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "  Ekzekuto esprimon, kiu povas malsukcesi.\n\n  Params: exp = Esprimo, kiu revenas negativan nombron se ĝi malsukcesas.\n\n  Throws: `SDL_Exception` Kiam la esprimo malsukcesas.\n",
+    "line" : 40,
+    "char" : 6,
+    "deco" : "FNeLiZv",
+    "parameters" : [
+     {
+      "name" : "exp",
+      "deco" : "i",
+      "storageClass" : [
+       "lazy"
+      ]
+     }
+    ],
+    "endline" : 46,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L48_C7",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 48,
+    "char" : 7,
+    "storageClass" : [
+     "@safe"
+    ],
+    "endline" : 58,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "sdlraii.raii",
+  "kind" : "module",
+  "file" : "C:\\Users\\masan\\Desktop\\Workspace\\SDLRAII\\source\\sdlraii\\raii.d",
+  "comment" : "  Administras rimedojn de la SDL biblioteko.\n\n  Authors:   masaniwa\n  Copyright: 2019 masaniwa\n  License:   MIT\n",
+  "members" : [
+   {
+    "name" : "sdlraii.except",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "SDL_Exception"
+    ]
+   },
+   {
+    "name" : "sdlraii.release",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "SDL_Release"
+    ]
+   },
+   {
+    "name" : "std.conv",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "to"
+    ]
+   },
+   {
+    "name" : "std.exception",
+    "kind" : "import",
+    "line" : 13,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "enforce"
+    ]
+   },
+   {
+    "name" : "derelict.sdl2.sdl",
+    "kind" : "import",
+    "line" : 26,
+    "char" : 12,
+    "protection" : "private"
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "comment" : "  Administras rimedon.\n\n  Params: T = Tipo de puntero de la rimedo.\n",
+    "line" : 34,
+    "char" : 1,
+    "name" : "SDL_RAII",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "SDL_RAII",
+      "kind" : "struct",
+      "protection" : "public",
+      "line" : 34,
+      "char" : 1,
+      "members" : [
+       {
+        "name" : "this",
+        "kind" : "constructor",
+        "comment" : "      Konstruas la strukturon.\n\n      Params: exp = Esprimo por akiri rimedon de la SDL biblioteko.\n                    Ĉi tiu rimedo estos administrata.\n\n      Throws: `SDL_Exception` Kiam malsukcesas akiri rimedon.\n",
+        "line" : 44,
+        "char" : 5,
+        "type" : "@trusted (lazy T exp)",
+        "parameters" : [
+         {
+          "name" : "exp",
+          "type" : "T",
+          "storageClass" : [
+           "lazy"
+          ]
+         }
+        ],
+        "endline" : 47,
+        "endchar" : 5
+       },
+       {
+        "name" : "~this",
+        "kind" : "destructor",
+        "line" : 51,
+        "char" : 5,
+        "endline" : 54,
+        "endchar" : 5
+       },
+       {
+        "name" : "ptr",
+        "kind" : "function",
+        "comment" : "      Akiras punteron de la rimedo.\n\n      Returns: La puntero de la rimedo.\n",
+        "line" : 61,
+        "char" : 7,
+        "type" : "pure nothrow @nogc @safe T()",
+        "endline" : 69,
+        "endchar" : 5
+       },
+       {
+        "name" : "res",
+        "kind" : "variable",
+        "line" : 71,
+        "char" : 15,
+        "type" : "T"
+       },
+       {
+        "name" : "__invariant1",
+        "kind" : "function",
+        "line" : 73,
+        "char" : 5,
+        "endline" : 77,
+        "endchar" : 1
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "__unittest_L79_C9",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 79,
+    "char" : 9,
+    "storageClass" : [
+     "@system"
+    ],
+    "endline" : 231,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "sdlraii.release",
+  "kind" : "module",
+  "file" : "C:\\Users\\masan\\Desktop\\Workspace\\SDLRAII\\source\\sdlraii\\release.d",
+  "members" : [
+   {
+    "name" : "derelict.sdl2.mixer",
+    "kind" : "import",
+    "line" : 16,
+    "char" : 12,
+    "protection" : "private"
+   },
+   {
+    "name" : "derelict.sdl2.net",
+    "kind" : "import",
+    "line" : 17,
+    "char" : 12,
+    "protection" : "private"
+   },
+   {
+    "name" : "derelict.sdl2.sdl",
+    "kind" : "import",
+    "line" : 18,
+    "char" : 12,
+    "protection" : "private"
+   },
+   {
+    "name" : "derelict.sdl2.ttf",
+    "kind" : "import",
+    "line" : 19,
+    "char" : 12,
+    "protection" : "private"
+   },
+   {
+    "name" : "SDL_Gen_Release!(SDL_Window*, SDL_DestroyWindow)",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 22,
+    "char" : 9
+   },
+   {
+    "name" : "SDL_Gen_Release!(SDL_Renderer*, SDL_DestroyRenderer)",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 23,
+    "char" : 9
+   },
+   {
+    "name" : "SDL_Gen_Release!(SDL_Texture*, SDL_DestroyTexture)",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 24,
+    "char" : 9
+   },
+   {
+    "name" : "SDL_Gen_Release!(SDL_Surface*, SDL_FreeSurface)",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 25,
+    "char" : 9
+   },
+   {
+    "name" : "SDL_Gen_Release!(SDL_PixelFormat*, SDL_FreeFormat)",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 26,
+    "char" : 9
+   },
+   {
+    "name" : "SDL_Gen_Release!(SDL_Palette*, SDL_FreePalette)",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 27,
+    "char" : 9
+   },
+   {
+    "name" : "SDL_Gen_Release!(SDL_Cursor*, SDL_FreeCursor)",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 28,
+    "char" : 9
+   },
+   {
+    "name" : "SDL_Gen_Release!(SDL_Joystick*, SDL_JoystickClose)",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 29,
+    "char" : 9
+   },
+   {
+    "name" : "SDL_Gen_Release!(SDL_GameController*, SDL_GameControllerClose)",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 30,
+    "char" : 9
+   },
+   {
+    "name" : "SDL_Gen_Release!(SDL_Haptic*, SDL_HapticClose)",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 31,
+    "char" : 9
+   },
+   {
+    "name" : "SDL_Gen_Release!(Mix_Chunk*, Mix_FreeChunk)",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 32,
+    "char" : 9
+   },
+   {
+    "name" : "SDL_Gen_Release!(Mix_Music*, Mix_FreeMusic)",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 33,
+    "char" : 9
+   },
+   {
+    "name" : "SDL_Gen_Release!(TTF_Font*, TTF_CloseFont)",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 34,
+    "char" : 9
+   },
+   {
+    "name" : "SDL_Gen_Release!(UDPpacket*, SDLNet_FreePacket)",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 35,
+    "char" : 9
+   },
+   {
+    "name" : "SDL_Gen_Release!(UDPpacket**, SDLNet_FreePacketV)",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 36,
+    "char" : 9
+   },
+   {
+    "name" : "SDL_Gen_Release!(_SDLNet_SocketSet*, SDLNet_FreeSocketSet)",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 37,
+    "char" : 9
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "line" : 45,
+    "char" : 15,
+    "name" : "SDL_Gen_Release",
+    "parameters" : [
+     {
+      "name" : "U",
+      "kind" : "type"
+     },
+     {
+      "name" : "f",
+      "kind" : "alias"
+     }
+    ],
+    "members" : [
+     {
+      "kind" : "template",
+      "line" : 48,
+      "char" : 5,
+      "name" : "SDL_Release",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type",
+        "type" : "U"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "SDL_Release",
+        "kind" : "alias",
+        "line" : 48,
+        "char" : 5,
+        "type" : "f"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "sdlraii.testmock.sdl2",
+  "kind" : "module",
+  "file" : "C:\\Users\\masan\\Desktop\\Workspace\\SDLRAII\\source\\sdlraii\\testmock\\sdl2.d",
+  "members" : []
+ },
+ {
+  "name" : "sdlraii.testmock.util",
+  "kind" : "module",
+  "file" : "C:\\Users\\masan\\Desktop\\Workspace\\SDLRAII\\source\\sdlraii\\testmock\\util.d",
+  "members" : []
+ }
+]

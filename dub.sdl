@@ -16,9 +16,3 @@ configuration "default" {
 configuration "sdlraii_testmock" {
     versions "sdlraii_testmock"
 }
-
-configuration "ddox-windows" {
-    platforms    "windows"
-    buildOptions "syntaxOnly"
-    dflags       "-Df__dummy.html" "-Xfdocs.json"
-}
