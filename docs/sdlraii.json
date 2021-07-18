@@ -182,32 +182,40 @@
         "kind" : "destructor",
         "line" : 51,
         "char" : 5,
-        "endline" : 54,
+        "endline" : 60,
         "endchar" : 5
        },
        {
         "name" : "ptr",
         "kind" : "function",
         "comment" : "      Akiras punteron de la rimedo.\n\n      Returns: La puntero de la rimedo.\n",
-        "line" : 61,
+        "line" : 67,
         "char" : 7,
         "type" : "pure nothrow @nogc @safe T()",
-        "endline" : 69,
+        "endline" : 75,
         "endchar" : 5
+       },
+       {
+        "name" : "_dtorFlag",
+        "kind" : "variable",
+        "line" : 77,
+        "char" : 18,
+        "deco" : "b",
+        "init" : "false"
        },
        {
         "name" : "res",
         "kind" : "variable",
-        "line" : 71,
+        "line" : 79,
         "char" : 15,
         "type" : "T"
        },
        {
         "name" : "__invariant1",
         "kind" : "function",
-        "line" : 73,
+        "line" : 81,
         "char" : 5,
-        "endline" : 77,
+        "endline" : 85,
         "endchar" : 1
        }
       ]
@@ -215,15 +223,15 @@
     ]
    },
    {
-    "name" : "__unittest_L79_C9",
+    "name" : "__unittest_L87_C9",
     "kind" : "function",
     "protection" : "public",
-    "line" : 79,
+    "line" : 87,
     "char" : 9,
     "storageClass" : [
      "@system"
     ],
-    "endline" : 231,
+    "endline" : 239,
     "endchar" : 1
    }
   ]
