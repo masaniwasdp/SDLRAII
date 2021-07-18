@@ -29,18 +29,23 @@ void main()
 
     scope (exit) { SDL_Quit(); }
 
-    // Kreas fenestron kaj rendiston, kiuj estos liberigitaj de RAII.
-    auto w = SDL_RAII!(SDL_Window*)(SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
-    auto r = SDL_RAII!(SDL_Renderer*)(SDL_CreateRenderer(w.ptr, -1, SDL_RENDERER_ACCELERATED));
+    {
+        // Kreas fenestron kaj rendiston, kiuj estos liberigitaj de RAII.
+        auto window = SDL_RAII!(SDL_Window*)(
+            SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
 
-    // Plenigas la ekranon. Escepto estos ĵetita se ĝi malsukcesas.
-    SDL_Try(SDL_SetRenderDrawColor(r.ptr, 0xC0, 0xBE, 0xBE, 0xEF));
-    SDL_Try(SDL_RenderFillRect(r.ptr, null));
+        auto renderer = SDL_RAII!(SDL_Renderer*)(
+            SDL_CreateRenderer(window.ptr, -1, SDL_RENDERER_ACCELERATED));
 
-    SDL_RenderPresent(r.ptr);
+        // Plenigas la ekranon. Escepto estos ĵetita se ĝi malsukcesas.
+        SDL_Try(SDL_SetRenderDrawColor(renderer.ptr, 0xC0, 0xBE, 0xBE, 0xEF));
+        SDL_Try(SDL_RenderFillRect(renderer.ptr, null));
 
-    // Atendas iomete.
-    SDL_Delay(5000);
+        SDL_RenderPresent(renderer.ptr);
+
+        // Atendas iomete.
+        SDL_Delay(5000);
+    }
 }
 ```
 
