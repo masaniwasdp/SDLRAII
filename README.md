@@ -32,7 +32,7 @@ void main()
     {
         // Kreas fenestron kaj rendiston, kiuj estos liberigitaj de RAII.
         auto window = SDL_RAII!(SDL_Window*)(
-            SDL_CreateWindow(toStringz(`Alice`), 0, 0, 77, 16, SDL_WINDOW_SHOWN));
+            SDL_CreateWindow(toStringz(`Alice`), 256, 256, 256, 256, SDL_WINDOW_SHOWN));
 
         auto renderer = SDL_RAII!(SDL_Renderer*)(
             SDL_CreateRenderer(window.ptr, -1, SDL_RENDERER_ACCELERATED));
