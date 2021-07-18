@@ -50,7 +50,13 @@ struct SDL_RAII(T)
 
     ~this()
     {
+        if (_dtorFlag) { return; }
+
         SDL_Release!T(res);
+
+        res = null;
+
+        _dtorFlag = true;
     }
 
     /**
@@ -68,11 +74,13 @@ struct SDL_RAII(T)
         return res;
     }
 
+    private bool _dtorFlag = false;
+
     private T res; // Puntero de rimedo, kiu estas administrata.
 
     invariant
     {
-        assert(res, `The resource should not be null.`);
+        assert(_dtorFlag || res !is null, `The resource should not be null.`);
     }
 }
 
